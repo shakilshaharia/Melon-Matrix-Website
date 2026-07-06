@@ -1,0 +1,177 @@
+<%
+  const SCOPES = [
+    { key: "home", label: "Home page only", hint: "Shown only in the homepage carousel." },
+    { key: "all", label: "Shown everywhere", hint: "Shared testimonials — shown on the homepage and the Shopify page." },
+    { key: "shopify", label: "Shopify page only", hint: "Shown only in the Shopify page carousel." },
+  ];
+  function scopeLabel(scope) {
+    const s = SCOPES.find((s) => s.key === scope);
+    return s ? s.label : scope;
+  }
+  const AVATAR_COLORS = { 1: "#f7a072", 2: "#6aa9f7", 3: "#5fd398", 4: "#f78bb0", 5: "#a98bf7", 6: "#f7c065" };
+  function truncate(str, n) {
+    return str.length > n ? str.slice(0, n).trim() + "…" : str;
+  }
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head') %></head>
+<body>
+<div class="adm-shell">
+  <%- include('partials/sidebar') %>
+  <main class="adm-main">
+    <div class="adm-head">
+      <div>
+        <h1>Testimonials</h1>
+        <p class="sub">Client quotes shown in the "What our clients say" sections on the Home and Shopify pages.</p>
+      </div>
+    </div>
+
+    <%- include('partials/flash') %>
+
+    <div class="panel">
+      <h3>Add testimonial</h3>
+      <form method="post" action="/admin/testimonials">
+        <div class="field">
+          <label for="new-name">Client name</label>
+          <input type="text" id="new-name" name="author_name" placeholder="e.g. Sarah Chen" required />
+        </div>
+        <div class="field">
+          <label for="new-role">Role &amp; company</label>
+          <input type="text" id="new-role" name="author_role" placeholder="e.g. VP of Marketing at Northwind Retail" />
+        </div>
+        <div class="field">
+          <label for="new-quote">Quote</label>
+          <textarea id="new-quote" name="quote" placeholder="What the client said…" required></textarea>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="new-rating">Rating</label>
+            <select id="new-rating" name="rating">
+              <option value="5" selected>5 stars</option>
+              <option value="4">4 stars</option>
+              <option value="3">3 stars</option>
+              <option value="2">2 stars</option>
+              <option value="1">1 star</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="new-scope">Show on</label>
+            <select id="new-scope" name="page_scope">
+              <option value="home">Home page only</option>
+              <option value="shopify" selected>Shopify page only</option>
+              <option value="all">Everywhere (Home + Shopify)</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="new-avatar">Avatar color</label>
+            <select id="new-avatar" name="avatar_variant">
+              <option value="1">Orange</option>
+              <option value="2">Blue</option>
+              <option value="3">Green</option>
+              <option value="4">Pink</option>
+              <option value="5">Purple</option>
+              <option value="6">Gold</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="new-sort">Sort order</label>
+            <input type="number" id="new-sort" name="sort_order" value="0" />
+            <p class="hint">Lower numbers appear first in the carousel.</p>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-green">Add testimonial</button>
+      </form>
+    </div>
+
+    <% if (!testimonials.length) { %>
+      <div class="panel" style="margin-top:24px;">
+        <p class="empty-note">No testimonials yet.</p>
+      </div>
+    <% } %>
+
+    <% SCOPES.forEach((scope) => {
+      const group = testimonials.filter((t) => t.page_scope === scope.key);
+      if (!group.length) return;
+    %>
+      <div class="panel" style="margin-top:24px;">
+        <h3><%= scope.label %> <span class="empty-note" style="font-weight:400;">(<%= group.length %>)</span></h3>
+        <p class="sub" style="margin-top:-8px; margin-bottom:18px;"><%= scope.hint %></p>
+
+        <% group.forEach((t) => { %>
+          <details class="collapse-item">
+            <summary class="collapse-summary">
+              <span class="collapse-dot" style="background:<%= AVATAR_COLORS[t.avatar_variant] || AVATAR_COLORS[1] %>"></span>
+              <span class="collapse-name"><%= t.author_name %></span>
+              <span class="collapse-role"><%= t.author_role %></span>
+              <span class="collapse-quote">&ldquo;<%= truncate(t.quote, 90) %>&rdquo;</span>
+            </summary>
+            <div class="collapse-body">
+            <form method="post" action="/admin/testimonials/<%= t.id %>">
+              <div class="field-row">
+                <div class="field">
+                  <label for="name-<%= t.id %>">Client name</label>
+                  <input type="text" id="name-<%= t.id %>" name="author_name" value="<%= t.author_name %>" required />
+                </div>
+                <div class="field">
+                  <label for="role-<%= t.id %>">Role &amp; company</label>
+                  <input type="text" id="role-<%= t.id %>" name="author_role" value="<%= t.author_role %>" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="quote-<%= t.id %>">Quote</label>
+                <textarea id="quote-<%= t.id %>" name="quote" required><%= t.quote %></textarea>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="rating-<%= t.id %>">Rating</label>
+                  <select id="rating-<%= t.id %>" name="rating">
+                    <% [5,4,3,2,1].forEach((n) => { %>
+                      <option value="<%= n %>" <%= t.rating === n ? 'selected' : '' %>><%= n %> star<%= n === 1 ? '' : 's' %></option>
+                    <% }) %>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="scope-<%= t.id %>">Show on</label>
+                  <select id="scope-<%= t.id %>" name="page_scope">
+                    <option value="home" <%= t.page_scope === 'home' ? 'selected' : '' %>>Home page only</option>
+                    <option value="shopify" <%= t.page_scope === 'shopify' ? 'selected' : '' %>>Shopify page only</option>
+                    <option value="all" <%= t.page_scope === 'all' ? 'selected' : '' %>>Everywhere (Home + Shopify)</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="avatar-<%= t.id %>">Avatar color</label>
+                  <select id="avatar-<%= t.id %>" name="avatar_variant">
+                    <option value="1" <%= t.avatar_variant === 1 ? 'selected' : '' %>>Orange</option>
+                    <option value="2" <%= t.avatar_variant === 2 ? 'selected' : '' %>>Blue</option>
+                    <option value="3" <%= t.avatar_variant === 3 ? 'selected' : '' %>>Green</option>
+                    <option value="4" <%= t.avatar_variant === 4 ? 'selected' : '' %>>Pink</option>
+                    <option value="5" <%= t.avatar_variant === 5 ? 'selected' : '' %>>Purple</option>
+                    <option value="6" <%= t.avatar_variant === 6 ? 'selected' : '' %>>Gold</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="sort-<%= t.id %>">Sort order</label>
+                  <input type="number" id="sort-<%= t.id %>" name="sort_order" value="<%= t.sort_order %>" />
+                </div>
+              </div>
+              <div class="row-actions" style="justify-content:flex-start; gap:10px;">
+                <button type="submit" class="btn btn-outline btn-sm">Save</button>
+              </div>
+            </form>
+            <form method="post" action="/admin/testimonials/<%= t.id %>/delete" onsubmit="return confirm('Delete this testimonial?');" style="margin-top:8px;">
+              <button type="submit" class="btn btn-danger-ghost btn-sm">Delete</button>
+            </form>
+            </div>
+          </details>
+        <% }) %>
+      </div>
+    <% }) %>
+  </main>
+</div>
+</body>
+</html>

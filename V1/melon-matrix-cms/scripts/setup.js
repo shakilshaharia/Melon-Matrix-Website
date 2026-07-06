@@ -122,6 +122,18 @@ async function main() {
       email VARCHAR(190) NOT NULL UNIQUE,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+    CREATE TABLE IF NOT EXISTS testimonials (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      author_name VARCHAR(150) NOT NULL,
+      author_role VARCHAR(200) DEFAULT '',
+      quote TEXT NOT NULL,
+      rating TINYINT NOT NULL DEFAULT 5,
+      page_scope VARCHAR(50) NOT NULL DEFAULT 'shopify',
+      avatar_variant TINYINT NOT NULL DEFAULT 1,
+      sort_order INT NOT NULL DEFAULT 0,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
   `);
 
   // ---------- Admin user ----------
@@ -234,6 +246,118 @@ async function main() {
       },
     },
     {
+      key: "shopify",
+      title: "Shopify",
+      meta_title: "Shopify Development & Growth Services — Melon Matrix",
+      meta_description: "Custom Shopify and Shopify Plus stores built for speed, conversion, and scale. From new builds to migrations, we turn storefronts into revenue engines.",
+      content: {
+        hero_eyebrow: "SHOPIFY, DONE RIGHT.",
+        hero_title: "Shopify Stores Built to <em>Sell.</em>",
+        hero_sub: "From new builds to Shopify Plus migrations, we design and engineer storefronts that load fast, convert visitors, and scale with your growth.",
+        hero_btn: "Book A Free Audit",
+        stat1_num: "32%", stat1_label: "AVG. CONVERSION LIFT", stat1_desc: "Within the first quarter post-launch",
+        stat2_num: "2×", stat2_label: "FASTER LOAD TIMES", stat2_desc: "Speed-tuned themes and apps",
+        stat3_num: "50+", stat3_label: "STORES LAUNCHED", stat3_desc: "From startups to Shopify Plus",
+        stat4_num: "24/7", stat4_label: "SUPPORT AVAILABLE", stat4_desc: "On our Growth & Signature plans",
+        why_eyebrow: "WHY MELON MATRIX",
+        why_title: "Everything your store needs <em>to grow.</em>",
+        why_lead: "We handle the design, the build, and the ongoing optimization — so you can focus on running your business.",
+        process_eyebrow: "HOW WE WORK",
+        process_title: "From brief to <em>launch,</em> without the guesswork.",
+        process_lead: "A clear, proven process that keeps your project on time and on budget.",
+        pricing_eyebrow: "PLANS",
+        pricing_title: "Shopify Packages <br />Built to <em>Scale</em>",
+        pricing_lead: "Transparent pricing for stores at every stage — from first launch to Shopify Plus.",
+        pricing_btn: "Talk To Us",
+        case_eyebrow: "PROVEN RESULTS",
+        case_title: "Real stores. <em>Real results.</em>",
+        case_lead: "See how we turned Northwind Retail's slow storefront into a 32%-higher-converting revenue machine — in a single quarter.",
+        testi_title: "What our <span class=\"text-red\">Shopify clients</span> say",
+        testi_lead: "Merchants who trusted us with their storefront.",
+        faq_title: "Shopify <em>FAQs</em>",
+        faq_lead: "Answers to the questions we hear most from merchants considering a new build or migration.",
+        cta_title: "Ready to grow your store?",
+        cta_text: "Book a free 15-minute Shopify audit and we'll show you exactly where you're leaving revenue on the table.",
+        cta_btn: "Book A Free Audit",
+      },
+    },
+    {
+      key: "web-design-development",
+      title: "Web Design & Development",
+      meta_title: "Web Design & Development - Melon Matrix",
+      meta_description: "Conversion-focused web design and development for brands that need fast, polished, scalable websites.",
+      content: {
+        hero_eyebrow: "WEBSITES, BUILT TO CONVERT.",
+        hero_title: "Web Design &amp; Development for <em>Growth.</em>",
+        hero_sub: "We design and develop fast, polished, conversion-focused websites that help your brand look credible, explain clearly, and turn visitors into leads.",
+        hero_btn: "Start Your Website Project",
+        stat1_num: "3s", stat1_label: "LOAD-TIME TARGET", stat1_desc: "Performance-minded builds from day one",
+        stat2_num: "100%", stat2_label: "RESPONSIVE", stat2_desc: "Designed for mobile, tablet, and desktop",
+        stat3_num: "50+", stat3_label: "PROJECTS SHIPPED", stat3_desc: "Across B2B, ecommerce, and service brands",
+        stat4_num: "SEO", stat4_label: "READY STRUCTURE", stat4_desc: "Clean pages, metadata, and scalable content",
+        why_eyebrow: "WHAT WE BUILD",
+        why_title: "Websites that feel clear, fast, and <em>credible.</em>",
+        why_lead: "From brand sites to landing pages and custom CMS experiences, every screen is planned around user clarity and measurable business action.",
+        process_eyebrow: "HOW WE WORK",
+        process_title: "A clear process from idea to <em>launch.</em>",
+        process_lead: "We keep the project practical: define the goal, design the experience, build it cleanly, then launch with tracking in place.",
+        pricing_eyebrow: "PACKAGES",
+        pricing_title: "Website Packages <br />Built to <em>Launch</em>",
+        pricing_lead: "Flexible website builds for growing brands, from focused landing pages to full custom CMS websites.",
+        pricing_btn: "Get A Quote",
+        case_eyebrow: "BUILT FOR OUTCOMES",
+        case_title: "Design, development, and growth thinking <em>in one build.</em>",
+        case_lead: "A good website is not just pages. It is positioning, speed, content structure, forms, tracking, and a path to the next business conversation.",
+        faq_title: "Web Design <em>FAQs</em>",
+        faq_lead: "Answers to common questions before starting a website project.",
+        cta_title: "Ready to build a better website?",
+        cta_text: "Tell us what you need, and we will map the right structure, pages, and launch plan for your brand.",
+        cta_btn: "Book A Website Call",
+      },
+    },
+    {
+      key: "performance-marketing",
+      title: "Performance Marketing",
+      meta_title: "Performance Marketing - Melon Matrix",
+      meta_description: "ROI-focused paid media strategy, campaign management, creative testing, and conversion tracking for brands that need measurable growth.",
+      content: {},
+    },
+    {
+      key: "marketing-automation",
+      title: "Marketing Automation",
+      meta_title: "Marketing Automation - Melon Matrix",
+      meta_description: "Automated email, CRM, lead nurturing, and lifecycle workflows that help brands convert and retain customers.",
+      content: {},
+    },
+    {
+      key: "seo-organic-growth",
+      title: "SEO & Organic Growth",
+      meta_title: "SEO & Organic Growth - Melon Matrix",
+      meta_description: "Technical SEO, content strategy, and organic growth systems that help brands rank, earn trust, and compound traffic.",
+      content: {},
+    },
+    {
+      key: "content-marketing",
+      title: "Content Marketing",
+      meta_title: "Content Marketing - Melon Matrix",
+      meta_description: "Content strategy, storytelling, blogs, case studies, and campaign assets that build trust and support sales.",
+      content: {},
+    },
+    {
+      key: "social-media-growth",
+      title: "Social Media Growth",
+      meta_title: "Social Media Growth - Melon Matrix",
+      meta_description: "Organic and paid social strategy, content planning, and growth systems for brands that need consistent visibility.",
+      content: {},
+    },
+    {
+      key: "brand-design-ui-ux",
+      title: "Brand Design & UI/UX",
+      meta_title: "Brand Design & UI/UX - Melon Matrix",
+      meta_description: "Brand identity, UI systems, and UX design for websites, apps, and digital products that need clarity and polish.",
+      content: {},
+    },
+    {
       key: "about",
       title: "About Us",
       meta_title: "About Us — Melon Matrix",
@@ -307,6 +431,63 @@ async function main() {
        VALUES (?, ?, ?, ?, '', '', ?)`,
       [p.key, p.title, p.meta_title, p.meta_description, JSON.stringify(p.content)]
     );
+  }
+
+  // ---------- Testimonials ----------
+  const [testiCount] = await conn.query("SELECT COUNT(*) AS n FROM testimonials");
+  if (!testiCount[0].n) {
+    console.log("→ Seeding testimonials…");
+    const testimonials = [
+      {
+        author_name: "John Doe",
+        author_role: "Head of Customer Experience at FinTech Global",
+        quote: "Integrating leezyAI has been a game-changer for our customer support workflow. We've seen a 40% decrease in response times and a significant uptick in customer satisfaction scores. The AI's ability to understand and process complex queries has freed our team to handle more nuanced issues.",
+        rating: 5, page_scope: "home", avatar_variant: 1, sort_order: 1,
+      },
+      {
+        author_name: "Elijah Ramirez",
+        author_role: "Director of Operations at EcoHome Solutions",
+        quote: "leezyAI's chatbot isn't just another tool; it's like having a highly skilled assistant that's learning and improving every day. Our customers love the instant and accurate information it provides, and we've been thrilled with the deep insights into our customer interactions.",
+        rating: 5, page_scope: "home", avatar_variant: 2, sort_order: 2,
+      },
+      {
+        author_name: "Sarah Chen",
+        author_role: "VP of Marketing at Northwind Retail",
+        quote: "Working with Melon Matrix completely transformed our Shopify store. Conversion rate jumped 32% in the first quarter, and their team felt like a true extension of ours — responsive, strategic, and genuinely invested in our growth.",
+        rating: 5, page_scope: "all", avatar_variant: 3, sort_order: 3,
+      },
+      {
+        author_name: "Marcus Bennett",
+        author_role: "Founder at Lumen Apparel",
+        quote: "From migration to launch the process was seamless. Our new storefront is faster, cleaner, and our customers feel it. Sales are up, cart abandonment is down, and the support has been first-class throughout.",
+        rating: 5, page_scope: "all", avatar_variant: 4, sort_order: 4,
+      },
+      {
+        author_name: "Aisha Khan",
+        author_role: "Head of E-commerce at Verde Goods",
+        quote: "The attention to detail and data-driven approach set them apart. Every decision was backed by insight, and the results speak for themselves — record revenue two months running and a brand that finally looks the part.",
+        rating: 5, page_scope: "all", avatar_variant: 5, sort_order: 5,
+      },
+      {
+        author_name: "David Okafor",
+        author_role: "CEO at Bright Lane Co.",
+        quote: "They don't just build, they partner. Melon Matrix understood our goals from day one and delivered a site that scales with us. Easily the best agency experience we've had to date.",
+        rating: 4, page_scope: "home", avatar_variant: 6, sort_order: 6,
+      },
+      {
+        author_name: "James Whitfield",
+        author_role: "Owner at Coastal Supply Co.",
+        quote: "They rebuilt our storefront from the ground up and cut our page load time in half. Within weeks we saw fewer abandoned carts and a real lift in mobile sales.",
+        rating: 5, page_scope: "shopify", avatar_variant: 6, sort_order: 7,
+      },
+    ];
+    for (const t of testimonials) {
+      await conn.query(
+        `INSERT INTO testimonials (author_name, author_role, quote, rating, page_scope, avatar_variant, sort_order)
+         VALUES (?, ?, ?, ?, ?, ?, ?)`,
+        [t.author_name, t.author_role, t.quote, t.rating, t.page_scope, t.avatar_variant, t.sort_order]
+      );
+    }
   }
 
   // ---------- Posts ----------

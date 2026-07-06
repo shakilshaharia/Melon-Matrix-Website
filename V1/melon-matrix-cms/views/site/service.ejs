@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+
+  <%- include('../partials/icons') %>
+  <%- include('../partials/navbar') %>
+
+  <section class="page-hero">
+    <span class="contact-blob cb-1" aria-hidden="true"></span>
+    <span class="contact-blob cb-2" aria-hidden="true"></span>
+    <div class="container">
+      <p class="eyebrow eyebrow-white"><%- content.hero_eyebrow %></p>
+      <h1 class="hero-title"><%- content.hero_title %></h1>
+      <p class="page-hero-sub"><%- content.hero_sub %></p>
+      <a href="/contact" class="btn btn-green btn-arrow" style="margin-top:28px;"><%= content.hero_btn || 'Book A Call' %> <span class="arrow-circle">-></span></a>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0; padding-bottom:0;">
+    <div class="container">
+      <div class="about-stats stats-standalone">
+        <div class="stat">
+          <span class="stat-num"><%= content.stat1_num %></span>
+          <span class="stat-label"><%= content.stat1_label %></span>
+          <span class="stat-desc"><%= content.stat1_desc %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><%= content.stat2_num %></span>
+          <span class="stat-label"><%= content.stat2_label %></span>
+          <span class="stat-desc"><%= content.stat2_desc %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><%= content.stat3_num %></span>
+          <span class="stat-label"><%= content.stat3_label %></span>
+          <span class="stat-desc"><%= content.stat3_desc %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><%= content.stat4_num %></span>
+          <span class="stat-label"><%= content.stat4_label %></span>
+          <span class="stat-desc"><%= content.stat4_desc %></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow-green center"><%- content.why_eyebrow %></p>
+      <h2 class="h2 center"><%- content.why_title %></h2>
+      <p class="lead center"><%- content.why_lead %></p>
+
+      <div class="cards-4" style="margin-top:50px;">
+        <% (content.cards || []).forEach((card, i) => { %>
+          <div class="growth-card">
+            <span class="gc-ico"><svg class="ico"><use href="#<%= card[0] %>"/></svg></span>
+            <span class="gc-num"><%= String(i + 1).padStart(2, '0') %></span>
+            <h3><%= card[1] %></h3>
+            <p><%= card[2] %></p>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+  </section>
+
+  <section class="section fix">
+    <div class="container">
+      <p class="eyebrow eyebrow-green center"><%- content.process_eyebrow || 'HOW WE WORK' %></p>
+      <h2 class="h2 center"><%- content.process_title %></h2>
+      <p class="lead center"><%- content.process_lead %></p>
+
+      <div class="cards-4" style="margin-top:50px;">
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-search"/></svg></span>
+          <span class="gc-num">01</span>
+          <h3>Audit</h3>
+          <p>We review your current assets, audience, data, and goals to find the clearest opportunities.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-target"/></svg></span>
+          <span class="gc-num">02</span>
+          <h3>Strategy</h3>
+          <p>We define the plan, priorities, message, channels, and measurements before production begins.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-settings"/></svg></span>
+          <span class="gc-num">03</span>
+          <h3>Build</h3>
+          <p>We create the campaigns, assets, workflows, or systems needed to execute the plan cleanly.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-bar"/></svg></span>
+          <span class="gc-num">04</span>
+          <h3>Optimize</h3>
+          <p>We monitor results, learn from the data, and keep improving what drives the strongest outcomes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section pricing" id="pricing">
+    <div class="container pricing-grid">
+      <div class="pricing-left">
+        <p class="eyebrow eyebrow-green"><%- content.pricing_eyebrow || 'PACKAGES' %></p>
+        <h2 class="h2"><%- content.pricing_title %></h2>
+        <p class="lead"><%- content.pricing_lead %></p>
+        <a href="/contact" class="btn btn-red btn-arrow">Get A Quote <span class="arrow-circle arrow-light">-></span></a>
+      </div>
+
+      <div class="plans-wrap">
+        <div class="plan-set active">
+          <div class="plan">
+            <h3 class="plan-name">Starter</h3>
+            <p class="plan-for">For brands that need a focused foundation and clear first execution plan.</p>
+            <div class="plan-price">$1200<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Discovery and audit</li>
+              <li>Core strategy setup</li>
+              <li>Priority recommendations</li>
+              <li>Basic reporting</li>
+              <li>Email support</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline-dark plan-btn">Get Started</a>
+          </div>
+          <div class="plan plan-featured">
+            <span class="badge">MOST POPULAR</span>
+            <h3 class="plan-name">Growth</h3>
+            <p class="plan-for">For teams ready for consistent execution, optimization, and reporting.</p>
+            <div class="plan-price">$2500<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Everything in Starter</li>
+              <li>Monthly execution plan</li>
+              <li>Creative and copy support</li>
+              <li>Conversion improvements</li>
+              <li>Performance reporting</li>
+              <li>Biweekly strategy calls</li>
+            </ul>
+            <a href="/contact" class="btn btn-red plan-btn">Get Started</a>
+          </div>
+          <div class="plan">
+            <h3 class="plan-name">Scale</h3>
+            <p class="plan-for">For brands that need deeper systems, more assets, and priority support.</p>
+            <div class="plan-price">Custom<span>/Scope</span></div>
+            <ul class="plan-feats">
+              <li>Everything in Growth</li>
+              <li>Advanced strategy</li>
+              <li>Multi-channel execution</li>
+              <li>Custom dashboards</li>
+              <li>Priority support</li>
+              <li>Monthly roadmap review</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline-dark plan-btn">Talk To Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow-green center"><%- content.case_eyebrow || 'BUILT FOR OUTCOMES' %></p>
+      <h2 class="h2 center"><%- content.case_title %></h2>
+      <p class="lead center"><%- content.case_lead %></p>
+
+      <div class="spotlight-grid" style="margin-top:44px;">
+        <div class="case-card">
+          <a href="/contact" class="case-media">
+            <img src="/assets/dashboard.png" alt="Performance dashboard" />
+            <span class="case-tag">Strategy</span>
+          </a>
+          <div class="case-body">
+            <h3><a href="/contact">Clear priorities before more activity</a></h3>
+            <p>We focus the work around the highest-impact opportunities, then build a plan your team can actually execute.</p>
+            <div class="case-stats">
+              <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-target"/></svg></span><strong>Focused</strong><small>Clear goals and priorities</small></div>
+              <div><span class="cs-ico cs-red"><svg class="ico"><use href="#i-zap"/></svg></span><strong>Fast</strong><small>Built for momentum</small></div>
+              <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-bar"/></svg></span><strong>Measured</strong><small>Progress you can track</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <a href="/contact" class="case-media">
+            <img src="/assets/growth_engine.png" alt="Growth engine" />
+            <span class="case-tag">Execution</span>
+          </a>
+          <div class="case-body">
+            <h3><a href="/contact">Systems that keep improving after launch</a></h3>
+            <p>Every asset, campaign, and workflow is built so performance feedback can shape the next improvement.</p>
+            <div class="case-stats">
+              <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-settings"/></svg></span><strong>Systemized</strong><small>Repeatable workflows</small></div>
+              <div><span class="cs-ico cs-red"><svg class="ico"><use href="#i-search"/></svg></span><strong>Clear</strong><small>Easy to understand</small></div>
+              <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-trending"/></svg></span><strong>Growing</strong><small>Optimized over time</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq">
+    <div class="container">
+      <h2 class="h2 center faq-title"><%- content.faq_title %></h2>
+      <p class="lead center"><%- content.faq_lead || 'Answers to common questions before starting.' %></p>
+
+      <div class="faq-list simple">
+        <div class="faq-item open">
+          <button class="faq-q"><span class="faq-text">How do we start?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>We start with a short discovery call, review your goals and current assets, then recommend the right scope and timeline.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-text">Can you work with our existing team?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Yes. We can work as your execution team, strategy partner, or a specialist layer alongside your internal team.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-text">Do you provide reporting?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Yes. We keep reporting practical and focused on the numbers that explain progress and guide the next decision.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-text">How long does it take to see results?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Some improvements can show quickly, while compounding channels take longer. We set expectations by channel, scope, and starting point.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta-wrap" id="cta">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-blob cta-blob-1"></div>
+        <div class="cta-blob cta-blob-2"></div>
+        <div class="cta-content">
+          <h2 class="cta-title"><%- content.cta_title %></h2>
+          <p><%- content.cta_text %></p>
+          <a href="/contact" class="btn btn-green btn-lg"><%= content.cta_btn || 'Book A Call' %></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('../partials/footer-map') %>
+  <%- include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+
+  <%- include('../partials/icons') %>
+  <%- include('../partials/navbar') %>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero">
+    <span class="contact-blob cb-1" aria-hidden="true"></span>
+    <span class="contact-blob cb-2" aria-hidden="true"></span>
+    <div class="container">
+      <p class="eyebrow eyebrow-white"><%- content.hero_eyebrow || 'WEBSITES, BUILT TO CONVERT.' %></p>
+      <h1 class="hero-title"><%- content.hero_title || 'Web Design &amp; Development for <em>Growth.</em>' %></h1>
+      <p class="page-hero-sub"><%- content.hero_sub || 'We design and develop fast, polished, conversion-focused websites that help your brand look credible, explain clearly, and turn visitors into leads.' %></p>
+      <a href="/contact" class="btn btn-green btn-arrow" style="margin-top:28px;"><%= content.hero_btn || 'Start Your Website Project' %> <span class="arrow-circle">-></span></a>
+    </div>
+  </section>
+
+  <!-- ===================== STATS ===================== -->
+  <section class="section" style="padding-top:0; padding-bottom:0;">
+    <div class="container">
+      <div class="about-stats stats-standalone">
+        <div class="stat">
+          <span class="stat-num"><%= content.stat1_num || '3s' %></span>
+          <span class="stat-label"><%= content.stat1_label || 'LOAD-TIME TARGET' %></span>
+          <span class="stat-desc"><%= content.stat1_desc || 'Performance-minded builds from day one' %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><%= content.stat2_num || '100%' %></span>
+          <span class="stat-label"><%= content.stat2_label || 'RESPONSIVE' %></span>
+          <span class="stat-desc"><%= content.stat2_desc || 'Designed for mobile, tablet, and desktop' %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><%= content.stat3_num || '50+' %></span>
+          <span class="stat-label"><%= content.stat3_label || 'PROJECTS SHIPPED' %></span>
+          <span class="stat-desc"><%= content.stat3_desc || 'Across B2B, ecommerce, and service brands' %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><%= content.stat4_num || 'SEO' %></span>
+          <span class="stat-label"><%= content.stat4_label || 'READY STRUCTURE' %></span>
+          <span class="stat-desc"><%= content.stat4_desc || 'Clean pages, metadata, and scalable content' %></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHAT WE BUILD ===================== -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow-green center"><%- content.why_eyebrow || 'WHAT WE BUILD' %></p>
+      <h2 class="h2 center"><%- content.why_title || 'Websites that feel clear, fast, and <em>credible.</em>' %></h2>
+      <p class="lead center"><%- content.why_lead || 'From brand sites to landing pages and custom CMS experiences, every screen is planned around user clarity and measurable business action.' %></p>
+
+      <div class="cards-4" style="margin-top:50px;">
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-monitor"/></svg></span>
+          <span class="gc-num">01</span>
+          <h3>Custom Website Design</h3>
+          <p>Distinct page designs that match your brand, explain your offer clearly, and guide visitors toward action.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-zap"/></svg></span>
+          <span class="gc-num">02</span>
+          <h3>Fast Front-End Builds</h3>
+          <p>Responsive development with clean layouts, quick loading, and smooth interactions across devices.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-settings"/></svg></span>
+          <span class="gc-num">03</span>
+          <h3>CMS &amp; Integrations</h3>
+          <p>Editable pages, blogs, forms, analytics, automations, and the tools your team needs to operate.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-target"/></svg></span>
+          <span class="gc-num">04</span>
+          <h3>Conversion Pages</h3>
+          <p>Landing pages and funnels built for campaigns, lead capture, product education, and sales conversations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW WE WORK ===================== -->
+  <section class="section fix">
+    <div class="container">
+      <p class="eyebrow eyebrow-green center"><%- content.process_eyebrow || 'HOW WE WORK' %></p>
+      <h2 class="h2 center"><%- content.process_title || 'A clear process from idea to <em>launch.</em>' %></h2>
+      <p class="lead center"><%- content.process_lead || 'We keep the project practical: define the goal, design the experience, build it cleanly, then launch with tracking in place.' %></p>
+
+      <div class="cards-4" style="margin-top:50px;">
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-search"/></svg></span>
+          <span class="gc-num">01</span>
+          <h3>Discovery</h3>
+          <p>We map your audience, offer, competitors, content needs, and the actions the website must drive.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-pen"/></svg></span>
+          <span class="gc-num">02</span>
+          <h3>UX &amp; Visual Design</h3>
+          <p>Wireframes and polished page designs show how the site will look, flow, and convert before development.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-monitor"/></svg></span>
+          <span class="gc-num">03</span>
+          <h3>Development</h3>
+          <p>We build responsive templates, CMS controls, forms, integrations, and performance foundations.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-shield"/></svg></span>
+          <span class="gc-num">04</span>
+          <h3>QA &amp; Launch</h3>
+          <p>Cross-device testing, speed checks, redirects, analytics, and final launch support keep the release steady.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRICING ===================== -->
+  <section class="section pricing" id="pricing">
+    <div class="container pricing-grid">
+      <div class="pricing-left">
+        <p class="eyebrow eyebrow-green"><%- content.pricing_eyebrow || 'PACKAGES' %></p>
+        <h2 class="h2"><%- content.pricing_title || 'Website Packages <br />Built to <em>Launch</em>' %></h2>
+        <p class="lead"><%- content.pricing_lead || 'Flexible website builds for growing brands, from focused landing pages to full custom CMS websites.' %></p>
+        <a href="/contact" class="btn btn-red btn-arrow"><%= content.pricing_btn || 'Get A Quote' %> <span class="arrow-circle arrow-light">-></span></a>
+      </div>
+
+      <div class="plans-wrap">
+        <div class="plan-set active">
+          <div class="plan">
+            <h3 class="plan-name">Launch Site</h3>
+            <p class="plan-for">For startups or service brands that need a polished, focused web presence.</p>
+            <div class="plan-price">$1200<span>/Project</span></div>
+            <ul class="plan-feats">
+              <li>Up to 5 custom pages</li>
+              <li>Responsive design</li>
+              <li>Contact form setup</li>
+              <li>Basic on-page SEO</li>
+              <li>Analytics installation</li>
+              <li>1 round of revisions</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline-dark plan-btn">Get Started</a>
+          </div>
+          <div class="plan plan-featured">
+            <span class="badge">MOST POPULAR</span>
+            <h3 class="plan-name">Growth Website</h3>
+            <p class="plan-for">For brands that need stronger positioning, more pages, and better conversion flow.</p>
+            <div class="plan-price">$2500<span>/Project</span></div>
+            <ul class="plan-feats">
+              <li>Up to 10 custom pages</li>
+              <li>UX wireframes and visual design</li>
+              <li>CMS or blog setup</li>
+              <li>Lead capture integrations</li>
+              <li>Performance optimization</li>
+              <li>QA testing and launch support</li>
+            </ul>
+            <a href="/contact" class="btn btn-red plan-btn">Get Started</a>
+          </div>
+          <div class="plan">
+            <h3 class="plan-name">Custom Platform</h3>
+            <p class="plan-for">For teams that need advanced templates, integrations, and a scalable content system.</p>
+            <div class="plan-price">Custom<span>/Scope</span></div>
+            <ul class="plan-feats">
+              <li>Custom page systems</li>
+              <li>Advanced CMS architecture</li>
+              <li>API and CRM integrations</li>
+              <li>Landing page templates</li>
+              <li>Migration support</li>
+              <li>Priority launch support</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline-dark plan-btn">Talk To Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CAPABILITY SPOTLIGHT ===================== -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow-green center"><%- content.case_eyebrow || 'BUILT FOR OUTCOMES' %></p>
+      <h2 class="h2 center"><%- content.case_title || 'Design, development, and growth thinking <em>in one build.</em>' %></h2>
+      <p class="lead center"><%- content.case_lead || 'A good website is not just pages. It is positioning, speed, content structure, forms, tracking, and a path to the next business conversation.' %></p>
+
+      <div class="spotlight-grid" style="margin-top:44px;">
+        <div class="case-card">
+          <a href="/contact" class="case-media">
+            <img src="/assets/dashboard.png" alt="Website performance dashboard" />
+            <span class="case-tag">Performance Ready</span>
+          </a>
+          <div class="case-body">
+            <h3><a href="/contact">Fast pages that support paid and organic traffic</a></h3>
+            <p>We plan image handling, layout structure, scripts, and responsive behavior so your site is not fighting your growth channels.</p>
+            <div class="case-stats">
+              <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-zap"/></svg></span><strong>Fast Load</strong><small>Built with speed in mind</small></div>
+              <div><span class="cs-ico cs-red"><svg class="ico"><use href="#i-target"/></svg></span><strong>Clear CTA</strong><small>Every page has a job</small></div>
+              <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-bar"/></svg></span><strong>Trackable</strong><small>Analytics-ready launch</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <a href="/contact" class="case-media">
+            <img src="/assets/growth_engine.png" alt="Website growth engine" />
+            <span class="case-tag">Easy To Manage</span>
+          </a>
+          <div class="case-body">
+            <h3><a href="/contact">A site your team can actually update</a></h3>
+            <p>From reusable sections to blog publishing and lead capture, we build the backend around how your team works after launch.</p>
+            <div class="case-stats">
+              <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-settings"/></svg></span><strong>CMS Ready</strong><small>Editable content areas</small></div>
+              <div><span class="cs-ico cs-red"><svg class="ico"><use href="#i-mail"/></svg></span><strong>Lead Flow</strong><small>Forms and notifications</small></div>
+              <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-search"/></svg></span><strong>SEO Base</strong><small>Clean content structure</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section faq">
+    <div class="container">
+      <h2 class="h2 center faq-title"><%- content.faq_title || 'Web Design <em>FAQs</em>' %></h2>
+      <p class="lead center"><%- content.faq_lead || 'Answers to common questions before starting a website project.' %></p>
+
+      <div class="faq-list simple">
+        <div class="faq-item open">
+          <button class="faq-q"><span class="faq-text">How long does a website project take?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Focused launch sites usually take 2 to 4 weeks. Larger custom websites with CMS, integrations, and more page templates usually take 4 to 8 weeks depending on scope.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-text">Can you redesign an existing website?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Yes. We can redesign your current site, rebuild it on a cleaner stack, preserve important URLs, and improve the structure without starting from zero.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-text">Will I be able to edit the website myself?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Yes. When CMS editing is part of the scope, we set up editable content areas so your team can update pages, posts, images, and key copy without touching code.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-text">Do you handle copywriting and content?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>We can work with your existing copy, improve it during the design process, or plan new page content from scratch as part of the project.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-text">Do you include SEO setup?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Every package includes a clean technical and on-page SEO foundation. Deeper keyword strategy, content plans, and ongoing SEO can be added when needed.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="section cta-wrap" id="cta">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-blob cta-blob-1"></div>
+        <div class="cta-blob cta-blob-2"></div>
+        <div class="cta-content">
+          <h2 class="cta-title"><%- content.cta_title || 'Ready to build a better website?' %></h2>
+          <p><%- content.cta_text || 'Tell us what you need, and we will map the right structure, pages, and launch plan for your brand.' %></p>
+          <a href="/contact" class="btn btn-green btn-lg"><%= content.cta_btn || 'Book A Website Call' %></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('../partials/footer-map') %>
+  <%- include('../partials/footer') %>
+</body>
+</html>

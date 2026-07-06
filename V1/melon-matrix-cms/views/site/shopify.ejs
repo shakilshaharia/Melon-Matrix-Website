@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+
+  <%- include('../partials/icons') %>
+  <%- include('../partials/navbar') %>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero">
+    <span class="contact-blob cb-1" aria-hidden="true"></span>
+    <span class="contact-blob cb-2" aria-hidden="true"></span>
+    <div class="container">
+      <p class="eyebrow eyebrow-white"><%- content.hero_eyebrow || 'SHOPIFY, DONE RIGHT.' %></p>
+      <h1 class="hero-title"><%- content.hero_title || 'Shopify Stores Built to <em>Sell.</em>' %></h1>
+      <p class="page-hero-sub"><%- content.hero_sub || '' %></p>
+      <a href="/contact" class="btn btn-green btn-arrow" style="margin-top:28px;"><%= content.hero_btn || 'Book A Free Audit' %> <span class="arrow-circle">→</span></a>
+    </div>
+  </section>
+
+  <!-- ===================== STATS ===================== -->
+  <section class="section" style="padding-top:0; padding-bottom:0;">
+    <div class="container">
+      <div class="about-stats stats-standalone">
+        <div class="stat">
+          <span class="stat-num"><%= content.stat1_num || '32%' %></span>
+          <span class="stat-label"><%= content.stat1_label || 'AVG. CONVERSION LIFT' %></span>
+          <span class="stat-desc"><%= content.stat1_desc || '' %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><%= content.stat2_num || '2×' %></span>
+          <span class="stat-label"><%= content.stat2_label || 'FASTER LOAD TIMES' %></span>
+          <span class="stat-desc"><%= content.stat2_desc || '' %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><%= content.stat3_num || '50+' %></span>
+          <span class="stat-label"><%= content.stat3_label || 'STORES LAUNCHED' %></span>
+          <span class="stat-desc"><%= content.stat3_desc || '' %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><%= content.stat4_num || '24/7' %></span>
+          <span class="stat-label"><%= content.stat4_label || 'SUPPORT AVAILABLE' %></span>
+          <span class="stat-desc"><%= content.stat4_desc || '' %></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WHY MELON MATRIX ===================== -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow-green center"><%- content.why_eyebrow || 'WHY MELON MATRIX' %></p>
+      <h2 class="h2 center"><%- content.why_title || 'Everything your store needs <em>to grow.</em>' %></h2>
+      <p class="lead center"><%- content.why_lead || '' %></p>
+
+      <div class="cards-4" style="margin-top:50px;">
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-cart"/></svg></span>
+          <span class="gc-num">01</span>
+          <h3>Conversion-First Design</h3>
+          <p>Every layout, product page, and checkout step is designed around one goal: turning visitors into paying customers.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-zap"/></svg></span>
+          <span class="gc-num">02</span>
+          <h3>Built for Speed</h3>
+          <p>Slow stores lose sales. We tune themes, images, and apps so your pages load fast on every device.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-cloud"/></svg></span>
+          <span class="gc-num">03</span>
+          <h3>Safe Migrations</h3>
+          <p>Moving platforms or replatforming to Shopify Plus? We preserve your SEO rankings, data, and history.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-bar"/></svg></span>
+          <span class="gc-num">04</span>
+          <h3>Ongoing Optimization</h3>
+          <p>Launch day is day one. We keep testing, tuning, and improving your store long after it goes live.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW WE WORK ===================== -->
+  <section class="section fix">
+    <div class="container">
+      <p class="eyebrow eyebrow-green center"><%- content.process_eyebrow || 'HOW WE WORK' %></p>
+      <h2 class="h2 center"><%- content.process_title || 'From brief to <em>launch,</em> without the guesswork.' %></h2>
+      <p class="lead center"><%- content.process_lead || '' %></p>
+
+      <div class="cards-4" style="margin-top:50px;">
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-search"/></svg></span>
+          <span class="gc-num">01</span>
+          <h3>Discovery &amp; Strategy</h3>
+          <p>We audit your goals, customers, and current store to map out the right plan and package for you.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-monitor"/></svg></span>
+          <span class="gc-num">02</span>
+          <h3>Design &amp; Build</h3>
+          <p>Custom design and development on Shopify or Shopify Plus, built around conversion from day one.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-shield"/></svg></span>
+          <span class="gc-num">03</span>
+          <h3>QA &amp; Launch</h3>
+          <p>Cross-device testing, speed checks, and a zero-downtime launch plan so nothing breaks on day one.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-trending"/></svg></span>
+          <span class="gc-num">04</span>
+          <h3>Grow &amp; Optimize</h3>
+          <p>Post-launch, we track performance and keep optimizing for conversion, speed, and revenue.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRICING ===================== -->
+  <section class="section pricing" id="pricing">
+    <div class="container pricing-grid">
+      <div class="pricing-left">
+        <p class="eyebrow eyebrow-green"><%- content.pricing_eyebrow || 'PLANS' %></p>
+        <h2 class="h2"><%- content.pricing_title || 'Shopify Packages <br />Built to <em>Scale</em>' %></h2>
+        <p class="lead"><%- content.pricing_lead || '' %></p>
+        <a href="/contact" class="btn btn-red btn-arrow"><%= content.pricing_btn || 'Talk To Us' %> <span class="arrow-circle arrow-light">→</span></a>
+      </div>
+
+      <div class="plans-wrap">
+        <div class="plan-set active">
+          <div class="plan">
+            <h3 class="plan-name">Basic Package</h3>
+            <p class="plan-for">Ideal for new stores that need a clean, fast Shopify setup.</p>
+            <div class="plan-price">$1500<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Theme setup &amp; configuration</li>
+              <li>Product upload (up to 50)</li>
+              <li>Essential apps installation</li>
+              <li>Mobile-responsive design</li>
+              <li>Payment &amp; shipping setup</li>
+              <li>Basic on-page SEO</li>
+              <li>1 round of revisions</li>
+              <li>Email support</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline-dark plan-btn">Get Started</a>
+          </div>
+          <div class="plan plan-featured">
+            <span class="badge">MOST POPULAR</span>
+            <h3 class="plan-name">Growth Package</h3>
+            <p class="plan-for">For brands ready to scale with a conversion-focused storefront.</p>
+            <div class="plan-price">$2500<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Everything in Basic with</li>
+              <li>Custom theme development</li>
+              <li>Unlimited product upload</li>
+              <li>Conversion-focused UX</li>
+              <li>Advanced apps integration</li>
+              <li>Speed &amp; performance tuning</li>
+              <li>QA testing &amp; launch support</li>
+            </ul>
+            <a href="/contact" class="btn btn-red plan-btn">Get Started</a>
+          </div>
+          <div class="plan">
+            <h3 class="plan-name">Signature Package</h3>
+            <p class="plan-for">For high-volume merchants needing Shopify Plus power.</p>
+            <div class="plan-price">$4000<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Everything in Growth with</li>
+              <li>Shopify Plus development</li>
+              <li>Custom checkout experience</li>
+              <li>Headless commerce ready</li>
+              <li>Dedicated account manager</li>
+              <li>Priority 24/7 support</li>
+              <li>Ongoing optimization</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline-dark plan-btn">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CASE STUDY SPOTLIGHT ===================== -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow eyebrow-green center"><%- content.case_eyebrow || 'PROVEN RESULTS' %></p>
+      <h2 class="h2 center"><%- content.case_title || 'Real stores. <em>Real results.</em>' %></h2>
+      <p class="lead center"><%- content.case_lead || '' %></p>
+
+      <div class="spotlight-grid" style="margin-top:44px;">
+        <div class="case-card">
+          <a href="/blog/northwind-retail-shopify-rebuild" class="case-media">
+            <img src="/assets/dashboard.png" alt="Northwind Retail case study" />
+            <span class="case-tag">Northwind Retail</span>
+          </a>
+          <div class="case-body">
+            <h3><a href="/blog/northwind-retail-shopify-rebuild">A Shopify Rebuild That Lifted Conversion 32%</a></h3>
+            <p>A conversion-first replatform that turned a slow storefront into a revenue machine in a single quarter.</p>
+            <div class="case-stats">
+              <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-trending"/></svg></span><strong>+32% Conversion</strong><small>First quarter after launch</small></div>
+              <div><span class="cs-ico cs-red"><svg class="ico"><use href="#i-zap"/></svg></span><strong>2× Faster</strong><small>Store load speed</small></div>
+              <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-bar"/></svg></span><strong>Record Revenue</strong><small>Two months running</small></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-card">
+          <a href="/blog/lumen-apparel-migration" class="case-media">
+            <img src="/assets/growth_engine.png" alt="Lumen Apparel case study" />
+            <span class="case-tag">Lumen Apparel</span>
+          </a>
+          <div class="case-body">
+            <h3><a href="/blog/lumen-apparel-migration">Seamless Migration to a Faster Storefront</a></h3>
+            <p>A full replatform from migration to launch that preserved SEO while slashing cart abandonment.</p>
+            <div class="case-stats">
+              <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-cloud"/></svg></span><strong>Zero Downtime</strong><small>Seamless migration</small></div>
+              <div><span class="cs-ico cs-red"><svg class="ico"><use href="#i-cart"/></svg></span><strong>Lower Abandonment</strong><small>Cleaner checkout flow</small></div>
+              <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-trending"/></svg></span><strong>Sales Up</strong><small>Post-launch growth</small></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="section testimonials">
+    <div class="container">
+      <div class="testi-head">
+        <div class="testi-arrows">
+          <button class="t-arrow" id="tPrev" aria-label="Previous">‹</button>
+          <button class="t-arrow t-arrow-red" id="tNext" aria-label="Next">›</button>
+        </div>
+        <div class="testi-title-wrap">
+          <h2 class="h2"><%- content.testi_title || 'What our <span class="text-red">Shopify clients</span> say' %></h2>
+          <p class="lead"><%- content.testi_lead || '' %></p>
+        </div>
+      </div>
+
+      <div class="testi-viewport">
+        <div class="testi-track" id="testiTrack">
+          <% (testimonials || []).forEach((t) => { %>
+            <article class="testi-card">
+              <div class="stars"><%= '★'.repeat(t.rating) + '☆'.repeat(5 - t.rating) %></div>
+              <span class="quote-mark">&ldquo;</span>
+              <p><%= t.quote %></p>
+              <div class="testi-person">
+                <span class="avatar av-<%= t.avatar_variant %>"></span>
+                <div><strong><%= t.author_name %></strong><small><%= t.author_role %></small></div>
+              </div>
+            </article>
+          <% }) %>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots"></div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section faq">
+    <div class="container">
+      <h2 class="h2 center faq-title"><%- content.faq_title || 'Shopify <em>FAQs</em>' %></h2>
+      <p class="lead center"><%- content.faq_lead || '' %></p>
+
+      <div class="faq-list simple">
+        <div class="faq-item open">
+          <button class="faq-q"><span class="faq-text">Do I need my own Shopify plan before we start?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>No — we can set up your Shopify account for you, or work inside an existing one. We'll recommend the right Shopify (or Shopify Plus) tier based on your catalog size and sales volume.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-text">How long does a typical Shopify build take?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Most Basic builds launch in 2–3 weeks. Growth and Signature projects, with custom development and app integrations, typically take 4–8 weeks depending on scope.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-text">Can you migrate my existing store without losing SEO rankings?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Yes. We map every URL, redirect, and metadata field before cutover so your search rankings and traffic carry over to the new store.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-text">What's the difference between the Basic, Growth, and Signature packages?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Basic covers a clean, fast standard setup. Growth adds custom theme development and conversion-focused UX for scaling brands. Signature is built for high-volume merchants on Shopify Plus, with a dedicated account manager and priority support.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-text">Do you offer ongoing support after launch?</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Yes. Growth and Signature plans include ongoing optimization, and every store gets a support window after launch to catch and fix anything that comes up.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="section cta-wrap" id="cta">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-blob cta-blob-1"></div>
+        <div class="cta-blob cta-blob-2"></div>
+        <div class="cta-content">
+          <h2 class="cta-title"><%- content.cta_title || 'Ready to grow your store?' %></h2>
+          <p><%- content.cta_text || '' %></p>
+          <a href="/contact" class="btn btn-green btn-lg"><%= content.cta_btn || 'Book A Free Audit' %></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('../partials/footer-map') %>
+  <%- include('../partials/footer') %>
+</body>
+</html>

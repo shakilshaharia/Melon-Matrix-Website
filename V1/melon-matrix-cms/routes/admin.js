@@ -77,6 +77,12 @@ router.get("/pages", admin.pages);
 router.get("/pages/:key", admin.pageForm);
 router.post("/pages/:key", admin.pageUpdate);
 
+// ---------- Testimonials ----------
+router.get("/testimonials", admin.testimonials);
+router.post("/testimonials", admin.testimonialCreate);
+router.post("/testimonials/:id", admin.testimonialUpdate);
+router.post("/testimonials/:id/delete", admin.testimonialDestroy);
+
 // ---------- Settings ----------
 router.get("/settings", admin.settings);
 router.post("/settings", admin.settingsUpdate);

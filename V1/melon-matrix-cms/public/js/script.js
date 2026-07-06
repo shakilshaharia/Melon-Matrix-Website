@@ -3,8 +3,8 @@ const navToggle = document.getElementById("navToggle");
 const navLinks = document.getElementById("navLinks");
 if (navToggle) {
   navToggle.addEventListener("click", () => navLinks.classList.toggle("open"));
-  // The "Solution" dropdown trigger is handled separately below — it toggles
-  // the submenu on mobile instead of immediately closing the whole nav.
+  // The "Solution" trigger is handled separately below — on mobile it expands
+  // its submenu inline instead of navigating away and closing the whole nav.
   navLinks.querySelectorAll("a:not(.nav-drop-trigger)").forEach((a) =>
     a.addEventListener("click", () => navLinks.classList.remove("open"))
   );
@@ -19,17 +19,18 @@ if (navToggle) {
 
   const isMobile = () => window.matchMedia("(max-width: 1024px)").matches;
 
-  // On mobile, tapping "Solution" reveals the submenu instead of navigating away;
-  // on desktop, the dropdown already opens on hover, so let the link work normally.
+  // Mobile: tapping "Solution" expands the submenu inline (accordion) instead
+  // of navigating. Desktop: the dropdown opens on hover, so let the link work.
   trigger.addEventListener("click", (e) => {
     if (!isMobile()) return;
     e.preventDefault();
     item.classList.toggle("open");
   });
 
-  document.addEventListener("click", (e) => {
-    if (!item.contains(e.target)) item.classList.remove("open");
-  });
+  // Tapping a submenu link closes the whole mobile nav.
+  item.querySelectorAll(".nav-drop-link").forEach((a) =>
+    a.addEventListener("click", () => navLinks && navLinks.classList.remove("open"))
+  );
 })();
 
 // ===================== FAQ accordion =====================

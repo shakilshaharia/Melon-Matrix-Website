@@ -553,60 +553,17 @@
 
       <div class="testi-viewport">
         <div class="testi-track" id="testiTrack">
-          <article class="testi-card">
-            <div class="stars">★★★★★</div>
-            <span class="quote-mark">&ldquo;</span>
-            <p>Integrating leezyAI has been a game-changer for our customer support workflow. We've seen a 40% decrease in response times and a significant uptick in customer satisfaction scores. The AI's ability to understand and process complex queries has freed our team to handle more nuanced issues.</p>
-            <div class="testi-person">
-              <span class="avatar av-1"></span>
-              <div><strong>John Doe</strong><small>Head of Customer Experience at FinTech Global</small></div>
-            </div>
-          </article>
-          <article class="testi-card">
-            <div class="stars">★★★★★</div>
-            <span class="quote-mark">&ldquo;</span>
-            <p>leezyAI's chatbot isn't just another tool; it's like having a highly skilled assistant that's learning and improving every day. Our customers love the instant and accurate information it provides, and we've been thrilled with the deep insights into our customer interactions.</p>
-            <div class="testi-person">
-              <span class="avatar av-2"></span>
-              <div><strong>Elijah Ramirez</strong><small>Director of Operations at EcoHome Solutions</small></div>
-            </div>
-          </article>
-          <article class="testi-card">
-            <div class="stars">★★★★★</div>
-            <span class="quote-mark">&ldquo;</span>
-            <p>Working with Melon Matrix completely transformed our Shopify store. Conversion rate jumped 32% in the first quarter, and their team felt like a true extension of ours—responsive, strategic, and genuinely invested in our growth.</p>
-            <div class="testi-person">
-              <span class="avatar av-3"></span>
-              <div><strong>Sarah Chen</strong><small>VP of Marketing at Northwind Retail</small></div>
-            </div>
-          </article>
-          <article class="testi-card">
-            <div class="stars">★★★★★</div>
-            <span class="quote-mark">&ldquo;</span>
-            <p>From migration to launch the process was seamless. Our new storefront is faster, cleaner, and our customers feel it. Sales are up, cart abandonment is down, and the support has been first-class throughout.</p>
-            <div class="testi-person">
-              <span class="avatar av-4"></span>
-              <div><strong>Marcus Bennett</strong><small>Founder at Lumen Apparel</small></div>
-            </div>
-          </article>
-          <article class="testi-card">
-            <div class="stars">★★★★★</div>
-            <span class="quote-mark">&ldquo;</span>
-            <p>The attention to detail and data-driven approach set them apart. Every decision was backed by insight, and the results speak for themselves—record revenue two months running and a brand that finally looks the part.</p>
-            <div class="testi-person">
-              <span class="avatar av-5"></span>
-              <div><strong>Aisha Khan</strong><small>Head of E-commerce at Verde Goods</small></div>
-            </div>
-          </article>
-          <article class="testi-card">
-            <div class="stars">★★★★☆</div>
-            <span class="quote-mark">&ldquo;</span>
-            <p>They don't just build, they partner. Melon Matrix understood our goals from day one and delivered a site that scales with us. Easily the best agency experience we've had to date.</p>
-            <div class="testi-person">
-              <span class="avatar av-6"></span>
-              <div><strong>David Okafor</strong><small>CEO at Bright Lane Co.</small></div>
-            </div>
-          </article>
+          <% (testimonials || []).forEach((t) => { %>
+            <article class="testi-card">
+              <div class="stars"><%= '★'.repeat(t.rating) + '☆'.repeat(5 - t.rating) %></div>
+              <span class="quote-mark">&ldquo;</span>
+              <p><%= t.quote %></p>
+              <div class="testi-person">
+                <span class="avatar av-<%= t.avatar_variant %>"></span>
+                <div><strong><%= t.author_name %></strong><small><%= t.author_role %></small></div>
+              </div>
+            </article>
+          <% }) %>
         </div>
       </div>
       <div class="testi-dots" id="testiDots"></div>

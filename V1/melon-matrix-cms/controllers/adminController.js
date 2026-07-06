@@ -7,6 +7,7 @@ const Page = require("../models/Page");
 const Setting = require("../models/Setting");
 const Message = require("../models/Message");
 const Subscriber = require("../models/Subscriber");
+const Testimonial = require("../models/Testimonial");
 const { invalidateSettingsCache } = require("../middleware/locals");
 const mailer = require("../utils/mailer");
 
@@ -141,6 +142,61 @@ exports.pageUpdate = async (req, res, next) => {
     });
     flash(req, "success", "Page saved.");
     res.redirect(`/admin/pages/${page.page_key}`);
+  } catch (err) { next(err); }
+};
+
+// ---------- Testimonials ----------
+
+exports.testimonials = async (req, res, next) => {
+  try {
+    const testimonials = await Testimonial.all();
+    res.render("admin/testimonials", { title: "Testimonials", nav: "testimonials", testimonials });
+  } catch (err) { next(err); }
+};
+
+function testimonialFromBody(body) {
+  return {
+    author_name: String(body.author_name || "").trim().slice(0, 150),
+    author_role: String(body.author_role || "").trim().slice(0, 200),
+    quote: String(body.quote || "").trim().slice(0, 2000),
+    rating: Math.min(5, Math.max(1, parseInt(body.rating, 10) || 5)),
+    page_scope: String(body.page_scope || "shopify").trim().slice(0, 50),
+    avatar_variant: Math.min(6, Math.max(1, parseInt(body.avatar_variant, 10) || 1)),
+    sort_order: parseInt(body.sort_order, 10) || 0,
+  };
+}
+
+exports.testimonialCreate = async (req, res, next) => {
+  try {
+    const data = testimonialFromBody(req.body);
+    if (!data.author_name || !data.quote) {
+      flash(req, "error", "Name and quote are required.");
+      return res.redirect("/admin/testimonials");
+    }
+    await Testimonial.create(data);
+    flash(req, "success", "Testimonial added.");
+    res.redirect("/admin/testimonials");
+  } catch (err) { next(err); }
+};
+
+exports.testimonialUpdate = async (req, res, next) => {
+  try {
+    const data = testimonialFromBody(req.body);
+    if (!data.author_name || !data.quote) {
+      flash(req, "error", "Name and quote are required.");
+      return res.redirect("/admin/testimonials");
+    }
+    await Testimonial.update(req.params.id, data);
+    flash(req, "success", "Testimonial updated.");
+    res.redirect("/admin/testimonials");
+  } catch (err) { next(err); }
+};
+
+exports.testimonialDestroy = async (req, res, next) => {
+  try {
+    await Testimonial.remove(req.params.id);
+    flash(req, "success", "Testimonial deleted.");
+    res.redirect("/admin/testimonials");
   } catch (err) { next(err); }
 };
 
