@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+
+  <%- include('../partials/icons') %>
+  <%- include('../partials/navbar') %>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="contact-hero">
+    <span class="contact-blob cb-1" aria-hidden="true"></span>
+    <span class="contact-blob cb-2" aria-hidden="true"></span>
+    <div class="container">
+      <p class="eyebrow eyebrow-white"><%- content.hero_eyebrow || 'GET IN TOUCH' %></p>
+      <h1 class="hero-title"><%- content.hero_title || 'Let\'s Talk About <br /><em>Your Growth.</em>' %></h1>
+      <p class="contact-hero-sub"><%- content.hero_sub || '' %></p>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT MAIN ===================== -->
+  <section class="section contact-main">
+    <div class="container contact-grid">
+
+      <div class="contact-info">
+        <p class="eyebrow eyebrow-green"><%- content.info_eyebrow || 'WE BUILD. YOU GROW.' %></p>
+        <h2 class="h2"><%- content.info_title || 'Start the <em>conversation.</em>' %></h2>
+        <p class="lead"><%- content.info_lead || '' %></p>
+
+        <div class="info-cards">
+          <div class="info-card">
+            <span class="info-ico"><svg class="ico"><use href="#i-mail"/></svg></span>
+            <div>
+              <h4>Email Us</h4>
+              <a href="mailto:<%= settings.email_primary || 'hello@melonmatrix.com' %>"><%= settings.email_primary || 'hello@melonmatrix.com' %></a>
+              <a href="mailto:<%= settings.email_sales || 'sales@melonmatrix.com' %>"><%= settings.email_sales || 'sales@melonmatrix.com' %></a>
+            </div>
+          </div>
+          <div class="info-card">
+            <span class="info-ico ico-red"><svg class="ico"><use href="#i-phone"/></svg></span>
+            <div>
+              <h4>Call Us</h4>
+              <a href="tel:<%= (settings.phone_primary || '+8801842909843').replace(/[^0-9+]/g, '') %>"><%= settings.phone_primary || '+880 1842 909843' %></a>
+              <a href="tel:<%= (settings.phone_secondary || '01584006977').replace(/[^0-9+]/g, '') %>"><%= settings.phone_secondary || '015-840-06977' %></a>
+            </div>
+          </div>
+          <div class="info-card">
+            <span class="info-ico"><svg class="ico"><use href="#i-pin"/></svg></span>
+            <div>
+              <h4>Visit Us</h4>
+              <p><%= (settings.address_canada || "77 City Centre Drive, Mississauga, ON L5B 1M5, Canada").replace(/\n/g, ', ') %></p>
+              <p><%= (settings.address_bd || "New Circuit House Rd, Cox's Bazar-4700").replace(/\n/g, ', ') %>, Bangladesh</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <span class="info-ico ico-red"><svg class="ico"><use href="#i-clock"/></svg></span>
+            <div>
+              <h4>Working Hours</h4>
+              <p><%= settings.working_hours || 'Monday – Friday: 9:00 AM – 6:00 PM' %></p>
+              <p><%= content.hours_line2 || 'We respond within one business day.' %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-socials">
+          <a href="<%= settings.facebook_url || '#' %>" aria-label="Facebook"><svg class="ico"><use href="#i-facebook"/></svg></a>
+          <a href="<%= settings.twitter_url || '#' %>" aria-label="Twitter"><svg class="ico"><use href="#i-x"/></svg></a>
+          <a href="<%= settings.instagram_url || '#' %>" aria-label="Instagram"><svg class="ico"><use href="#i-instagram"/></svg></a>
+        </div>
+      </div>
+
+      <div class="contact-form-card" id="contactForm">
+        <h3><%= content.form_title || 'Book a quick call' %></h3>
+        <p class="form-intro"><%= content.form_intro || 'Fill in the form and our team will get back to you with next steps.' %></p>
+
+        <form class="form-grid" id="contactFormEl" novalidate>
+          <div class="field">
+            <label for="cf-name">Full Name</label>
+            <input type="text" id="cf-name" name="name" placeholder="John Carter" required />
+          </div>
+          <div class="field">
+            <label for="cf-email">Email Address</label>
+            <input type="email" id="cf-email" name="email" placeholder="you@company.com" required />
+          </div>
+          <div class="field">
+            <label for="cf-phone">Phone Number</label>
+            <input type="tel" id="cf-phone" name="phone" placeholder="+1 (000) 000-0000" />
+          </div>
+          <div class="field">
+            <label for="cf-company">Company / Store</label>
+            <input type="text" id="cf-company" name="company" placeholder="Your brand name" />
+          </div>
+          <div class="field">
+            <label for="cf-service">Service Needed</label>
+            <select id="cf-service" name="service">
+              <option value="" selected disabled>Select a service</option>
+              <option>Shopify (Everything)</option>
+              <option>Web Design &amp; Development</option>
+              <option>Performance Marketing</option>
+              <option>SEO &amp; Organic Growth</option>
+              <option>Marketing Automation</option>
+              <option>Content Marketing</option>
+              <option>Social Media Growth</option>
+              <option>Brand Design &amp; UI/UX</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cf-budget">Monthly Budget</label>
+            <select id="cf-budget" name="budget">
+              <option value="" selected disabled>Select a range</option>
+              <option>Under $1,500</option>
+              <option>$1,500 – $2,500</option>
+              <option>$2,500 – $4,500</option>
+              <option>$4,500+</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="cf-message">Project Details</label>
+            <textarea id="cf-message" name="message" placeholder="Tell us about your goals, timeline, and what's holding you back…" required></textarea>
+          </div>
+          <div class="field full">
+            <button type="submit" class="btn btn-red btn-lg form-submit">Send Message <span class="arrow-circle arrow-light">→</span></button>
+            <p class="form-note">By submitting, you agree to our Privacy Policy. No spam — ever.</p>
+            <p class="form-success" id="formSuccess" role="status">✓ Thanks! Your message has been sent. We'll get back to you within one business day.</p>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <%- include('../partials/footer-map') %>
+  <%- include('../partials/footer') %>
+
+  <script>
+    // ===================== Contact form -> POST /contact =====================
+    (function () {
+      const form = document.getElementById("contactFormEl");
+      const success = document.getElementById("formSuccess");
+      if (!form) return;
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+        const data = Object.fromEntries(new FormData(form).entries());
+        const btn = form.querySelector(".form-submit");
+        btn.disabled = true;
+        try {
+          const res = await fetch("/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          const out = await res.json();
+          if (out.ok) {
+            form.reset();
+            success.textContent = "✓ Thanks! Your message has been sent. We'll get back to you within one business day.";
+            success.classList.add("show");
+            setTimeout(() => success.classList.remove("show"), 6000);
+          } else {
+            success.textContent = out.error || "Something went wrong. Please try again.";
+            success.classList.add("show");
+          }
+        } catch (err) {
+          success.textContent = "Network error. Please try again.";
+          success.classList.add("show");
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

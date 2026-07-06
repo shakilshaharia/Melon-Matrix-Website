@@ -1,0 +1,27 @@
+<aside class="adm-sidebar">
+  <a href="/admin" class="adm-brand">
+    <img src="/assets/logo_white.png" alt="Melon Matrix" />
+  </a>
+
+  <nav class="adm-nav">
+    <span class="adm-nav-label">Content</span>
+    <a href="/admin" class="<%= nav === 'dashboard' ? 'active' : '' %>">Dashboard</a>
+    <a href="/admin/posts" class="<%= nav === 'posts' ? 'active' : '' %>">Posts</a>
+    <a href="/admin/categories" class="<%= nav === 'categories' ? 'active' : '' %>">Categories</a>
+    <a href="/admin/tags" class="<%= nav === 'tags' ? 'active' : '' %>">Tags</a>
+    <a href="/admin/media" class="<%= nav === 'media' ? 'active' : '' %>">Media</a>
+    <a href="/admin/pages" class="<%= nav === 'pages' ? 'active' : '' %>">Pages</a>
+
+    <span class="adm-nav-label">Inbox</span>
+    <a href="/admin/messages" class="<%= nav === 'messages' ? 'active' : '' %>">Messages</a>
+    <a href="/admin/subscribers" class="<%= nav === 'subscribers' ? 'active' : '' %>">Subscribers</a>
+
+    <span class="adm-nav-label">System</span>
+    <a href="/admin/settings" class="<%= nav === 'settings' ? 'active' : '' %>">Settings</a>
+    <a href="/" target="_blank" rel="noopener">View Site ↗</a>
+  </nav>
+
+  <form action="/admin/logout" method="post" class="adm-logout">
+    <button type="submit">Log out</button>
+  </form>
+</aside>

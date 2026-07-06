@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head') %></head>
+<body>
+<div class="adm-shell">
+  <%- include('partials/sidebar') %>
+  <main class="adm-main">
+    <div class="adm-head">
+      <div>
+        <h1>Dashboard</h1>
+        <p class="sub">Overview of your website content</p>
+      </div>
+      <a href="/admin/posts/new" class="btn btn-red">+ New Post</a>
+    </div>
+
+    <%- include('partials/flash') %>
+
+    <div class="stat-grid">
+      <div class="stat-card accent"><div class="num"><%= stats.published %></div><div class="lbl">Published posts</div></div>
+      <div class="stat-card"><div class="num"><%= stats.drafts %></div><div class="lbl">Drafts</div></div>
+      <div class="stat-card green"><div class="num"><%= stats.unread %></div><div class="lbl">Unread messages</div></div>
+      <div class="stat-card"><div class="num"><%= stats.subscribers %></div><div class="lbl">Subscribers</div></div>
+    </div>
+
+    <div class="panel">
+      <h3>Recent posts</h3>
+      <div class="table-wrap" style="border:none">
+        <table>
+          <thead><tr><th>Title</th><th>Category</th><th>Status</th><th>Updated</th><th></th></tr></thead>
+          <tbody>
+            <% if (!recentPosts.length) { %>
+              <tr><td colspan="5" class="empty-note">No posts yet. Create your first one!</td></tr>
+            <% } %>
+            <% recentPosts.forEach((p) => { %>
+            <tr>
+              <td><span class="row-title"><%= p.title %></span></td>
+              <td><%= p.category_name || '—' %></td>
+              <td><span class="pill pill-<%= p.status %>"><%= p.status %></span></td>
+              <td><%= new Date(p.updated_at).toLocaleDateString() %></td>
+              <td><div class="row-actions"><a class="btn btn-outline btn-sm" href="/admin/posts/<%= p.id %>/edit">Edit</a></div></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h3>Latest messages</h3>
+      <div class="table-wrap" style="border:none">
+        <table>
+          <thead><tr><th>From</th><th>Service</th><th>Message</th><th>Received</th></tr></thead>
+          <tbody>
+            <% if (!recentMessages.length) { %>
+              <tr><td colspan="4" class="empty-note">No messages yet.</td></tr>
+            <% } %>
+            <% recentMessages.forEach((m) => { %>
+            <tr>
+              <td>
+                <span class="row-title"><%= m.name %> <% if (!m.is_read) { %><span class="pill pill-unread">new</span><% } %></span>
+                <div class="row-sub"><%= m.email %></div>
+              </td>
+              <td><%= m.service || '—' %></td>
+              <td><%= (m.message || '').slice(0, 80) %><%= (m.message || '').length > 80 ? '…' : '' %></td>
+              <td><%= new Date(m.created_at).toLocaleDateString() %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

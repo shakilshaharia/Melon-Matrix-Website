@@ -1,0 +1,75 @@
+<!-- ===================== NAVBAR ===================== -->
+<header class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <div class="nav-pill">
+      <a href="/" class="brand" aria-label="<%= settings.site_name || 'Melon Matrix' %> home">
+        <img src="/assets/logo.png" alt="<%= settings.site_name || 'Melon Matrix' %>" />
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="/" class="<%= active === 'home' ? 'active' : '' %>">Home</a>
+        <a href="/#services">Marketing</a>
+        <div class="nav-item has-dropdown">
+          <a href="/#systems" class="nav-drop-trigger">Solution <svg class="ico nav-caret"><use href="#i-chevron"/></svg></a>
+          <div class="nav-dropdown mega">
+            <div class="mega-head">
+              <div>
+                <p class="mega-eyebrow">OUR SOLUTIONS</p>
+                <p class="mega-lead">Everything we offer to help your brand build, market, and scale.</p>
+              </div>
+              <a href="/#services" class="mega-viewall">View all <span>→</span></a>
+            </div>
+
+            <div class="mega-grid">
+              <a class="nav-drop-link" href="/contact">
+                <span class="ndl-ico"><svg class="ico"><use href="#i-monitor"/></svg></span>
+                <span class="ndl-text"><strong>Web Design &amp; Development</strong><small>Custom sites built to convert</small></span>
+              </a>
+              <a class="nav-drop-link" href="/contact">
+                <span class="ndl-ico"><svg class="ico"><use href="#i-bag"/></svg></span>
+                <span class="ndl-text"><strong>Shopify (Everything)</strong><small>Stores designed to scale revenue</small></span>
+              </a>
+              <a class="nav-drop-link" href="/contact">
+                <span class="ndl-ico"><svg class="ico"><use href="#i-trending"/></svg></span>
+                <span class="ndl-text"><strong>Performance Marketing</strong><small>Paid channels engineered for ROI</small></span>
+              </a>
+              <a class="nav-drop-link" href="/contact">
+                <span class="ndl-ico"><svg class="ico"><use href="#i-settings"/></svg></span>
+                <span class="ndl-text"><strong>Marketing Automation</strong><small>Workflows that nurture on autopilot</small></span>
+              </a>
+              <a class="nav-drop-link" href="/contact">
+                <span class="ndl-ico"><svg class="ico"><use href="#i-search"/></svg></span>
+                <span class="ndl-text"><strong>SEO &amp; Organic Growth</strong><small>Rank higher, compound your traffic</small></span>
+              </a>
+              <a class="nav-drop-link" href="/contact">
+                <span class="ndl-ico"><svg class="ico"><use href="#i-edit"/></svg></span>
+                <span class="ndl-text"><strong>Content Marketing</strong><small>Stories that build trust and pipeline</small></span>
+              </a>
+              <a class="nav-drop-link" href="/contact">
+                <span class="ndl-ico"><svg class="ico"><use href="#i-share"/></svg></span>
+                <span class="ndl-text"><strong>Social Media Growth</strong><small>Organic + paid social that scales</small></span>
+              </a>
+              <a class="nav-drop-link" href="/contact">
+                <span class="ndl-ico"><svg class="ico"><use href="#i-pen"/></svg></span>
+                <span class="ndl-text"><strong>Brand Design &amp; UI/UX</strong><small>Identity and interfaces that stand out</small></span>
+              </a>
+            </div>
+
+            <div class="mega-cta">
+              <img src="/assets/robot.png" alt="" aria-hidden="true" />
+              <h4>Not sure where to start?</h4>
+              <p>Book a free 15-minute call and we'll map out the right solution for your goals.</p>
+              <a href="/contact" class="btn btn-green btn-arrow">Book a Call <span class="arrow-circle">→</span></a>
+            </div>
+          </div>
+        </div>
+        <a href="/blog" class="<%= active === 'blog' ? 'active' : '' %>">Blog</a>
+        <a href="/about" class="<%= active === 'about' ? 'active' : '' %>">About Us</a>
+        <a href="/contact" class="<%= active === 'contact' ? 'active' : '' %>">Contact Us</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <a href="/contact" class="lets-talk">Lets Talk</a>
+  </div>
+</header>

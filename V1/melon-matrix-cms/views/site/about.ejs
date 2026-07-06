@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+
+  <%- include('../partials/icons') %>
+  <%- include('../partials/navbar') %>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero">
+    <span class="contact-blob cb-1" aria-hidden="true"></span>
+    <span class="contact-blob cb-2" aria-hidden="true"></span>
+    <div class="container">
+      <p class="eyebrow eyebrow-white"><%- content.hero_eyebrow || 'ABOUT MELON MATRIX' %></p>
+      <h1 class="hero-title"><%- content.hero_title || 'We Build. <br /><em>You Grow.</em>' %></h1>
+      <p class="page-hero-sub"><%- content.hero_sub || '' %></p>
+    </div>
+  </section>
+
+  <!-- ===================== OUR STORY ===================== -->
+  <section class="section about-story">
+    <div class="container about-grid">
+      <div class="about-copy">
+        <p class="eyebrow eyebrow-green"><%- content.story_eyebrow || 'OUR STORY' %></p>
+        <h2 class="h2"><%- content.story_title || 'A growth partner, <br /><em>not a vendor.</em>' %></h2>
+        <p class="lead"><%- content.story_p1 || '' %></p>
+        <p class="lead"><%- content.story_p2 || '' %></p>
+        <a href="/contact" class="btn btn-green btn-arrow"><%= content.story_btn || 'Book A Quick Call' %> <span class="arrow-circle">→</span></a>
+      </div>
+      <div class="about-art">
+        <img src="/assets/dashboard.png" alt="Melon Matrix client dashboard showing revenue growth" />
+      </div>
+    </div>
+    <div class="container">
+      <div class="about-stats">
+        <div class="stat">
+          <span class="stat-num"><%= content.stat1_num || '2017' %></span>
+          <span class="stat-label"><%= content.stat1_label || 'FOUNDED' %></span>
+          <span class="stat-desc"><%= content.stat1_desc || '' %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><%= content.stat2_num || '50+' %></span>
+          <span class="stat-label"><%= content.stat2_label || 'B2B CLIENTS' %></span>
+          <span class="stat-desc"><%= content.stat2_desc || '' %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><%= content.stat3_num || '1,000+' %></span>
+          <span class="stat-label"><%= content.stat3_label || 'BUSINESSES SERVED' %></span>
+          <span class="stat-desc"><%= content.stat3_desc || '' %></span>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><%= content.stat4_num || '45%' %></span>
+          <span class="stat-label"><%= content.stat4_label || 'MORE PIPELINE' %></span>
+          <span class="stat-desc"><%= content.stat4_desc || '' %></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== VALUES ===================== -->
+  <section class="section about-values">
+    <div class="container">
+      <h2 class="h2 center"><%- content.values_title || 'What we <em>stand for</em>' %></h2>
+      <p class="lead center"><%- content.values_lead || '' %></p>
+
+      <div class="cards-4 values-cards">
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-trending"/></svg></span>
+          <span class="gc-num">01</span>
+          <h3>Performance First</h3>
+          <p>Design is opinion; data is truth. Every decision we make is measured against pipeline, conversion, and ROI — not vanity metrics.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-target"/></svg></span>
+          <span class="gc-num">02</span>
+          <h3>True Partnership</h3>
+          <p>We work as an extension of your team — responsive, strategic, and genuinely invested in your growth, not just the deliverable.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-zap"/></svg></span>
+          <span class="gc-num">03</span>
+          <h3>Speed &amp; Craft</h3>
+          <p>Fast sites, fast turnarounds, no compromise on quality. We build storefronts and campaigns that are as polished as they are quick.</p>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-shield"/></svg></span>
+          <span class="gc-num">04</span>
+          <h3>Radical Transparency</h3>
+          <p>Clear reporting, honest recommendations, and no black boxes. You'll always know what we're doing, why, and what it returned.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MISSION ===================== -->
+  <section class="section fix">
+    <div class="container">
+      <div class="fix-box">
+        <h2 class="fix-title"><%- content.mission_title || 'One Mission: <span class="text-red">Measurable Growth</span>' %></h2>
+        <p><%- content.mission_text || '' %></p>
+        <a href="/contact" class="btn btn-green"><%= content.mission_btn || 'Work With Us' %></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TEAM ===================== -->
+  <section class="section team">
+    <div class="container">
+      <h2 class="h2 center"><%- content.team_title || 'The people behind <em>the matrix</em>' %></h2>
+      <p class="lead center"><%- content.team_lead || '' %></p>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="/assets/avatars/p1.jpg" alt="<%= content.team1_role || 'Founder & CEO' %> of Melon Matrix" />
+          <h4><%= content.team1_name || 'Team Member' %></h4>
+          <span class="team-role"><%= content.team1_role || 'Founder & CEO' %></span>
+          <p><%= content.team1_bio || '' %></p>
+        </div>
+        <div class="team-card">
+          <img src="/assets/avatars/p2.jpg" alt="<%= content.team2_role || 'Head of Growth' %> at Melon Matrix" />
+          <h4><%= content.team2_name || 'Team Member' %></h4>
+          <span class="team-role"><%= content.team2_role || 'Head of Growth' %></span>
+          <p><%= content.team2_bio || '' %></p>
+        </div>
+        <div class="team-card">
+          <img src="/assets/avatars/p3.jpg" alt="<%= content.team3_role || 'Lead Shopify Developer' %> at Melon Matrix" />
+          <h4><%= content.team3_name || 'Team Member' %></h4>
+          <span class="team-role"><%= content.team3_role || 'Lead Shopify Developer' %></span>
+          <p><%= content.team3_bio || '' %></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="section cta-wrap">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-blob cta-blob-1"></div>
+        <div class="cta-blob cta-blob-2"></div>
+        <div class="cta-content">
+          <h2 class="cta-title"><%- content.cta_title || 'Get a free call' %></h2>
+          <p><%- content.cta_text || '' %></p>
+          <a href="/contact" class="btn btn-green btn-lg"><%= content.cta_btn || 'Book an Assessment' %></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('../partials/footer-map') %>
+  <%- include('../partials/footer') %>
+</body>
+</html>

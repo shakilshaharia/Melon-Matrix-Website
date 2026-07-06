@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head') %></head>
+<body>
+<div class="adm-shell">
+  <%- include('partials/sidebar') %>
+  <main class="adm-main">
+    <div class="adm-head">
+      <div><h1>Subscribers</h1><p class="sub"><%= items.length %> newsletter subscriber(s)</p></div>
+    </div>
+
+    <%- include('partials/flash') %>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Email</th><th>Subscribed</th><th></th></tr></thead>
+        <tbody>
+          <% if (!items.length) { %><tr><td colspan="3" class="empty-note">No subscribers yet.</td></tr><% } %>
+          <% items.forEach((s) => { %>
+          <tr>
+            <td><span class="row-title"><%= s.email %></span></td>
+            <td><%= new Date(s.created_at).toLocaleDateString() %></td>
+            <td>
+              <div class="row-actions">
+                <form method="post" action="/admin/subscribers/<%= s.id %>/delete" onsubmit="return confirm('Remove this subscriber?');">
+                  <button type="submit" class="btn btn-danger-ghost btn-sm">Remove</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head') %></head>
+<body>
+<div class="adm-shell">
+  <%- include('partials/sidebar') %>
+  <main class="adm-main">
+    <div class="adm-head">
+      <div>
+        <h1>Posts</h1>
+        <p class="sub"><%= counts.total || 0 %> total · <%= counts.published || 0 %> published · <%= counts.draft || 0 %> drafts</p>
+      </div>
+      <a href="/admin/posts/new" class="btn btn-red">+ New Post</a>
+    </div>
+
+    <%- include('partials/flash') %>
+
+    <div class="panel" style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+      <a href="/admin/posts" class="btn btn-sm <%= !status ? 'btn-dark' : 'btn-outline' %>">All</a>
+      <a href="/admin/posts?status=published" class="btn btn-sm <%= status === 'published' ? 'btn-dark' : 'btn-outline' %>">Published</a>
+      <a href="/admin/posts?status=draft" class="btn btn-sm <%= status === 'draft' ? 'btn-dark' : 'btn-outline' %>">Drafts</a>
+      <form method="get" action="/admin/posts" style="margin-left:auto; display:flex; gap:8px;">
+        <% if (status) { %><input type="hidden" name="status" value="<%= status %>" /><% } %>
+        <div class="field" style="margin:0"><input type="search" name="q" value="<%= q || '' %>" placeholder="Search posts…" /></div>
+        <button type="submit" class="btn btn-outline btn-sm">Search</button>
+      </form>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Title</th><th>Category</th><th>Status</th><th>Published</th><th>Updated</th><th></th></tr></thead>
+        <tbody>
+          <% if (!posts.length) { %>
+            <tr><td colspan="7" class="empty-note">Nothing here yet.</td></tr>
+          <% } %>
+          <% posts.forEach((p) => { %>
+          <tr>
+            <td style="width:64px"><img class="thumb" src="<%= p.featured_image || '/assets/dashboard.png' %>" alt="" /></td>
+            <td>
+              <span class="row-title"><%= p.title %></span>
+              <div class="row-sub">/blog/<%= p.slug %></div>
+            </td>
+            <td><%= p.category_name || '—' %></td>
+            <td><span class="pill pill-<%= p.status %>"><%= p.status %></span></td>
+            <td><%= p.published_at ? new Date(p.published_at).toLocaleDateString() : '—' %></td>
+            <td><%= new Date(p.updated_at).toLocaleDateString() %></td>
+            <td>
+              <div class="row-actions">
+                <% if (p.status === 'published') { %><a class="btn btn-outline btn-sm" href="/blog/<%= p.slug %>" target="_blank" rel="noopener">View</a><% } %>
+                <a class="btn btn-outline btn-sm" href="/admin/posts/<%= p.id %>/edit">Edit</a>
+                <form method="post" action="/admin/posts/<%= p.id %>/delete" onsubmit="return confirm('Delete this post permanently?');">
+                  <button type="submit" class="btn btn-danger-ghost btn-sm">Delete</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+</body>
+</html>

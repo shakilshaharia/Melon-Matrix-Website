@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head') %></head>
+<body>
+<div class="adm-shell">
+  <%- include('partials/sidebar') %>
+  <main class="adm-main">
+    <div class="adm-head">
+      <div><h1>Media Library</h1><p class="sub"><%= items.length %> file(s)</p></div>
+      <% if (items.length) { %>
+      <div class="field" style="margin:0; min-width:260px;">
+        <input type="search" id="mediaSearch" placeholder="Search images by name…" autocomplete="off" />
+      </div>
+      <% } %>
+    </div>
+
+    <%- include('partials/flash') %>
+
+    <div class="panel">
+      <h3>Upload images</h3>
+      <form method="post" action="/admin/media/upload" enctype="multipart/form-data" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <div class="field" style="margin:0; flex:1; min-width:220px;">
+          <input type="file" name="files" accept="image/*" multiple required />
+        </div>
+        <button type="submit" class="btn btn-red">Upload</button>
+      </form>
+      <p class="hint" style="margin-top:8px;">JPG, PNG, GIF, WebP or SVG — max 8&nbsp;MB each, up to 12 at once.</p>
+    </div>
+
+    <% if (!items.length) { %>
+      <div class="panel"><p class="empty-note">No uploads yet.</p></div>
+    <% } else { %>
+    <div class="media-grid" id="mediaGrid">
+      <% items.forEach((m) => { %>
+      <div class="media-card" data-name="<%= (m.original_name || m.filename || '').toLowerCase() %>">
+        <div class="mc-img"><img src="<%= m.url %>" alt="" loading="lazy" /></div>
+        <div class="mc-body">
+          <div class="mc-name" title="<%= m.original_name || m.filename %>"><%= m.original_name || m.filename %></div>
+          <div class="mc-meta"><%= (m.size / 1024).toFixed(0) %> KB · <%= new Date(m.created_at).toLocaleDateString() %></div>
+          <input class="copy-input" value="<%= m.url %>" readonly onclick="this.select()" />
+          <div class="mc-actions" style="margin-top:8px;">
+            <button type="button" class="btn btn-outline js-copy" data-url="<%= m.url %>">Copy URL</button>
+            <form method="post" action="/admin/media/<%= m.id %>/delete" onsubmit="return confirm('Delete this file? Pages using it will show a broken image.');">
+              <button type="submit" class="btn btn-danger-ghost">Delete</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <p class="empty-note" id="mediaNoResults" hidden>No images match your search.</p>
+    <% } %>
+  </main>
+</div>
+<script src="/js/admin.js"></script>
+</body>
+</html>

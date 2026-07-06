@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head') %></head>
+<body>
+<div class="adm-shell">
+  <%- include('partials/sidebar') %>
+  <main class="adm-main">
+    <div class="adm-head">
+      <div><h1>Categories</h1><p class="sub">Group your blog posts</p></div>
+    </div>
+
+    <%- include('partials/flash') %>
+
+    <div class="panel">
+      <h3>Add category</h3>
+      <form method="post" action="/admin/categories" style="display:flex; gap:10px; flex-wrap:wrap;">
+        <div class="field" style="margin:0; flex:1; min-width:220px;">
+          <input type="text" name="name" placeholder="Category name" required />
+        </div>
+        <button type="submit" class="btn btn-red">Add</button>
+      </form>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Name</th><th>Slug</th><th>Published posts</th><th></th></tr></thead>
+        <tbody>
+          <% if (!categories.length) { %><tr><td colspan="4" class="empty-note">No categories yet.</td></tr><% } %>
+          <% categories.forEach((c) => { %>
+          <tr>
+            <td>
+              <form method="post" action="/admin/categories/<%= c.id %>" style="display:flex; gap:8px; align-items:center;">
+                <div class="field" style="margin:0"><input type="text" name="name" value="<%= c.name %>" /></div>
+                <button type="submit" class="btn btn-outline btn-sm">Rename</button>
+              </form>
+            </td>
+            <td>/blog/category/<%= c.slug %></td>
+            <td><%= c.post_count %></td>
+            <td>
+              <div class="row-actions">
+                <form method="post" action="/admin/categories/<%= c.id %>/delete" onsubmit="return confirm('Delete this category? Its posts become uncategorized.');">
+                  <button type="submit" class="btn btn-danger-ghost btn-sm">Delete</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+</body>
+</html>

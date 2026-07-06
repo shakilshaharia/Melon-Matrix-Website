@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('partials/head') %>
+  <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
+</head>
+<body>
+<div class="adm-shell">
+  <%- include('partials/sidebar') %>
+  <main class="adm-main">
+    <div class="adm-head">
+      <div>
+        <h1><%= title %></h1>
+        <% if (post.id && post.status === 'published') { %>
+          <p class="sub">Live at <a href="/blog/<%= post.slug %>" target="_blank" rel="noopener" style="color:var(--red); font-weight:600;">/blog/<%= post.slug %></a></p>
+        <% } %>
+      </div>
+      <a href="/admin/posts" class="btn btn-outline">← Back to posts</a>
+    </div>
+
+    <%- include('partials/flash') %>
+
+    <form method="post"
+          action="<%= post.id ? '/admin/posts/' + post.id : '/admin/posts' %>"
+          enctype="multipart/form-data"
+          id="postForm">
+      <div class="form-grid">
+
+        <!-- ===== Main column ===== -->
+        <div>
+          <div class="panel">
+            <div class="field">
+              <label for="f-title">Title</label>
+              <input type="text" id="f-title" name="title" value="<%= post.title %>" required />
+            </div>
+            <div class="field">
+              <label for="f-slug">Slug (URL)</label>
+              <input type="text" id="f-slug" name="slug" value="<%= post.slug %>" placeholder="auto-generated-from-title" />
+              <p class="hint">SEO-friendly URL: /blog/<span id="slugPreview"><%= post.slug || 'your-post-slug' %></span></p>
+            </div>
+            <div class="field">
+              <label for="f-excerpt">Excerpt</label>
+              <textarea id="f-excerpt" name="excerpt" placeholder="Short summary shown on listing cards and used as the default meta description…"><%= post.excerpt %></textarea>
+            </div>
+            <div class="field">
+              <label>Content</label>
+              <div class="editor-box">
+                <div id="editor"></div>
+              </div>
+              <textarea name="content" id="f-content" hidden><%= post.content %></textarea>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>SEO</h3>
+            <div class="field">
+              <label for="f-mtitle">Meta title</label>
+              <input type="text" id="f-mtitle" name="meta_title" value="<%= post.meta_title %>" placeholder="Defaults to the post title" />
+            </div>
+            <div class="field">
+              <label for="f-mdesc">Meta description</label>
+              <textarea id="f-mdesc" name="meta_description" placeholder="Defaults to the excerpt"><%= post.meta_description %></textarea>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="f-mkey">Meta keywords</label>
+                <input type="text" id="f-mkey" name="meta_keywords" value="<%= post.meta_keywords %>" placeholder="comma, separated, keywords" />
+              </div>
+              <div class="field">
+                <label for="f-canon">Canonical URL</label>
+                <input type="url" id="f-canon" name="canonical_url" value="<%= post.canonical_url %>" placeholder="Leave empty for the default" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Side column ===== -->
+        <div>
+          <div class="panel">
+            <h3>Publish</h3>
+            <p class="hint" style="margin-bottom:14px;">
+              Status: <span class="pill pill-<%= post.status %>"><%= post.status %></span>
+              <% if (post.published_at) { %> · first published <%= new Date(post.published_at).toLocaleDateString() %><% } %>
+            </p>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <button type="submit" name="action" value="draft" class="btn btn-outline">Save Draft</button>
+              <button type="submit" name="action" value="publish" class="btn btn-green">Publish</button>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Organization</h3>
+            <div class="field">
+              <label for="f-cat">Category</label>
+              <select id="f-cat" name="category_id">
+                <option value="">— Uncategorized —</option>
+                <% categories.forEach((c) => { %>
+                <option value="<%= c.id %>" <%= post.category_id === c.id ? 'selected' : '' %>><%= c.name %></option>
+                <% }) %>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-tags">Tags</label>
+              <input type="text" id="f-tags" name="tags" value="<%= postTags.map(t => t.name).join(', ') %>" placeholder="shopify, cro, growth" />
+              <p class="hint">Comma-separated. New tags are created automatically.</p>
+            </div>
+            <div class="field">
+              <label for="f-read">Read time</label>
+              <input type="text" id="f-read" name="read_time" value="<%= post.read_time %>" placeholder="5 min" />
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Featured image</h3>
+            <div class="feat-preview" id="featPreview">
+              <% if (post.featured_image) { %><img src="<%= post.featured_image %>" alt="" /><% } else { %><span>No image selected</span><% } %>
+            </div>
+            <input type="hidden" name="featured_image" id="featUrl" value="<%= post.featured_image %>" />
+            <div class="field">
+              <label>Upload new</label>
+              <input type="file" name="featured_upload" accept="image/*" />
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <button type="button" class="btn btn-outline btn-sm" id="openMedia">Choose from media</button>
+              <button type="button" class="btn btn-danger-ghost btn-sm" id="clearFeat">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <!-- Media picker modal -->
+    <div class="modal-backdrop" id="mediaModal">
+      <div class="modal">
+        <div class="modal-head">
+          <h3>Media Library</h3>
+          <button type="button" id="closeMedia" aria-label="Close">×</button>
+        </div>
+        <div class="modal-body">
+          <div class="media-grid" id="mediaGrid">
+            <% media.forEach((m) => { %>
+            <div class="media-card js-pick" data-url="<%= m.url %>">
+              <div class="mc-img"><img src="<%= m.url %>" alt="" loading="lazy" /></div>
+              <div class="mc-body"><div class="mc-name"><%= m.original_name || m.filename %></div></div>
+            </div>
+            <% }) %>
+            <% if (!media.length) { %><p class="empty-note">No uploads yet. Upload images from the Media page or the field on the left.</p><% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+</html>

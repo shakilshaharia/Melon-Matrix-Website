@@ -1,0 +1,19 @@
+<% if (pagination.totalPages > 1) {
+  const qs = pagination.q ? '&q=' + encodeURIComponent(pagination.q) : '';
+%>
+<nav class="pagination" aria-label="Blog pages">
+  <% if (pagination.current > 1) { %>
+    <a class="page-link" href="<%= pagination.basePath %>?page=<%= pagination.current - 1 %><%= qs %>" data-page="<%= pagination.current - 1 %>">‹ Prev</a>
+  <% } %>
+  <% for (let i = 1; i <= pagination.totalPages; i++) { %>
+    <% if (i === pagination.current) { %>
+      <span class="page-link active"><%= i %></span>
+    <% } else { %>
+      <a class="page-link" href="<%= pagination.basePath %>?page=<%= i %><%= qs %>" data-page="<%= i %>"><%= i %></a>
+    <% } %>
+  <% } %>
+  <% if (pagination.current < pagination.totalPages) { %>
+    <a class="page-link" href="<%= pagination.basePath %>?page=<%= pagination.current + 1 %><%= qs %>" data-page="<%= pagination.current + 1 %>">Next ›</a>
+  <% } %>
+</nav>
+<% } %>

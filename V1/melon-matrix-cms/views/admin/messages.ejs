@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head') %></head>
+<body>
+<div class="adm-shell">
+  <%- include('partials/sidebar') %>
+  <main class="adm-main">
+    <div class="adm-head">
+      <div><h1>Messages</h1><p class="sub">Contact form submissions</p></div>
+    </div>
+
+    <%- include('partials/flash') %>
+
+    <% if (!items.length) { %>
+      <div class="panel"><p class="empty-note">No messages yet.</p></div>
+    <% } %>
+
+    <% items.forEach((m) => { %>
+    <div class="panel">
+      <div style="display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap; margin-bottom:12px;">
+        <div>
+          <span class="row-title"><%= m.name %></span>
+          <% if (!m.is_read) { %><span class="pill pill-unread">new</span><% } %>
+          <div class="row-sub">
+            <a href="mailto:<%= m.email %>" style="color:var(--red); font-weight:600;"><%= m.email %></a>
+            <% if (m.phone) { %> · <%= m.phone %><% } %>
+            <% if (m.company) { %> · <%= m.company %><% } %>
+          </div>
+          <div class="row-sub">
+            <% if (m.service) { %>Service: <%= m.service %><% } %>
+            <% if (m.budget) { %> · Budget: <%= m.budget %><% } %>
+            · <%= new Date(m.created_at).toLocaleString() %>
+          </div>
+        </div>
+        <div class="row-actions">
+          <% if (!m.is_read) { %>
+          <form method="post" action="/admin/messages/<%= m.id %>/read">
+            <button type="submit" class="btn btn-outline btn-sm">Mark read</button>
+          </form>
+          <% } %>
+          <form method="post" action="/admin/messages/<%= m.id %>/delete" onsubmit="return confirm('Delete this message?');">
+            <button type="submit" class="btn btn-danger-ghost btn-sm">Delete</button>
+          </form>
+        </div>
+      </div>
+      <p class="msg-body"><%= m.message %></p>
+    </div>
+    <% }) %>
+  </main>
+</div>
+</body>
+</html>

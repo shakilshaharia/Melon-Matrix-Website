@@ -1,0 +1,22 @@
+<% if (posts.length) { %>
+  <% posts.forEach((p) => { %>
+  <article class="blog-card">
+    <a href="/blog/<%= p.slug %>" class="bc-media">
+      <img src="<%= p.featured_image || '/assets/dashboard.png' %>" alt="<%= p.title %>" loading="lazy" />
+      <% if (p.category_name) { %><span class="post-tag"><%= p.category_name %></span><% } %>
+    </a>
+    <div class="bc-body">
+      <div class="post-meta">
+        <span><%= fmtDate(p.published_at) %></span>
+        <span class="dot-sep">•</span>
+        <span class="post-read"><svg class="ico"><use href="#i-clock"/></svg> <%= p.read_time || '5 min' %></span>
+      </div>
+      <h3><a href="/blog/<%= p.slug %>"><%= p.title %></a></h3>
+      <p><%= p.excerpt %></p>
+      <a href="/blog/<%= p.slug %>" class="bc-link">Read more <svg class="ico"><use href="#i-arrow"/></svg></a>
+    </div>
+  </article>
+  <% }) %>
+<% } else { %>
+  <div class="blog-empty">No articles here yet — check back soon.</div>
+<% } %>

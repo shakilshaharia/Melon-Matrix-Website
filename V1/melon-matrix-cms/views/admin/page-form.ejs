@@ -1,0 +1,80 @@
+<%
+  // Pretty label from a content key: "hero_title" -> "Hero title"
+  function labelize(key) {
+    return key.replace(/_/g, " ").replace(/^\w/, (c) => c.toUpperCase());
+  }
+  function isLong(v) {
+    return String(v || "").length > 90 || String(v || "").includes("\n");
+  }
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head') %></head>
+<body>
+<div class="adm-shell">
+  <%- include('partials/sidebar') %>
+  <main class="adm-main">
+    <div class="adm-head">
+      <div>
+        <h1><%= title %></h1>
+        <p class="sub">Basic HTML like &lt;br /&gt;, &lt;em&gt; and &lt;span class="text-red"&gt; is allowed in headings.</p>
+      </div>
+      <a href="/admin/pages" class="btn btn-outline">← Back to pages</a>
+    </div>
+
+    <%- include('partials/flash') %>
+
+    <form method="post" action="/admin/pages/<%= page.page_key %>">
+      <div class="form-grid">
+        <div>
+          <div class="panel">
+            <h3>Page content</h3>
+            <% Object.entries(page.content).forEach(([key, value]) => { %>
+              <div class="field">
+                <label for="c-<%= key %>"><%= labelize(key) %></label>
+                <% if (isLong(value)) { %>
+                  <textarea id="c-<%= key %>" name="content__<%= key %>"><%= value %></textarea>
+                <% } else { %>
+                  <input type="text" id="c-<%= key %>" name="content__<%= key %>" value="<%= value %>" />
+                <% } %>
+              </div>
+            <% }) %>
+          </div>
+        </div>
+
+        <div>
+          <div class="panel">
+            <h3>Save</h3>
+            <button type="submit" class="btn btn-green" style="width:100%; justify-content:center;">Save Page</button>
+          </div>
+
+          <div class="panel">
+            <h3>SEO</h3>
+            <div class="field">
+              <label for="f-title">Page title</label>
+              <input type="text" id="f-title" name="title" value="<%= page.title %>" />
+            </div>
+            <div class="field">
+              <label for="f-mtitle">Meta title</label>
+              <input type="text" id="f-mtitle" name="meta_title" value="<%= page.meta_title %>" />
+            </div>
+            <div class="field">
+              <label for="f-mdesc">Meta description</label>
+              <textarea id="f-mdesc" name="meta_description"><%= page.meta_description %></textarea>
+            </div>
+            <div class="field">
+              <label for="f-mkey">Meta keywords</label>
+              <input type="text" id="f-mkey" name="meta_keywords" value="<%= page.meta_keywords %>" />
+            </div>
+            <div class="field">
+              <label for="f-canon">Canonical URL</label>
+              <input type="url" id="f-canon" name="canonical_url" value="<%= page.canonical_url %>" placeholder="Leave empty for the default" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </main>
+</div>
+</body>
+</html>

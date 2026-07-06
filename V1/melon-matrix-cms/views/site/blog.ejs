@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+
+  <%- include('../partials/icons') %>
+  <%- include('../partials/navbar') %>
+
+  <!-- ===================== PAGE HERO ===================== -->
+  <section class="page-hero">
+    <span class="contact-blob cb-1" aria-hidden="true"></span>
+    <span class="contact-blob cb-2" aria-hidden="true"></span>
+    <div class="container">
+      <p class="eyebrow eyebrow-white"><%- content.hero_eyebrow || 'THE MATRIX BLOG' %></p>
+      <h1 class="hero-title"><%- content.hero_title || 'Insights That <br /><em>Drive Growth.</em>' %></h1>
+      <p class="page-hero-sub"><%- content.hero_sub || '' %></p>
+    </div>
+  </section>
+
+  <!-- ===================== BLOG MAIN ===================== -->
+  <section class="section blog-main">
+    <div class="container" id="blogApp">
+
+      <!-- Toolbar: category filter + search -->
+      <div class="blog-toolbar">
+        <ul class="blog-filters" id="blogFilters">
+          <li class="<%= !category ? 'active' : '' %>" data-cat="">
+            <a href="/blog">All</a>
+          </li>
+          <% categories.filter(c => c.post_count > 0).forEach((c) => { %>
+            <li class="<%= category && category.slug === c.slug ? 'active' : '' %>" data-cat="<%= c.slug %>">
+              <a href="/blog/category/<%= c.slug %>"><%= c.name %></a>
+            </li>
+          <% }) %>
+        </ul>
+        <form class="blog-search" id="blogSearch" action="<%= category ? '/blog/category/' + category.slug : '/blog' %>" method="get" role="search">
+          <input type="search" name="q" id="blogSearchInput" value="<%= q || '' %>" placeholder="Search articles…" autocomplete="off" aria-label="Search articles" />
+          <button type="submit" aria-label="Search"><svg class="ico"><use href="#i-search"/></svg></button>
+        </form>
+      </div>
+
+      <!-- Results note (search) -->
+      <p class="blog-results-note" id="blogNote" <%= q ? '' : 'hidden' %>>
+        <% if (q) { %>
+          <span id="blogNoteText"><%= pagination.total %> result<%= pagination.total === 1 ? '' : 's' %> for “<%= q %>”<% if (category) { %> in <%= category.name %><% } %></span>
+          — <a href="#" id="blogClear">clear search</a>
+        <% } %>
+      </p>
+
+      <!-- Post grid -->
+      <div class="blog-grid" id="blogGrid" aria-live="polite">
+        <%- include('partials/blog-cards', { posts: posts }) %>
+      </div>
+
+      <!-- Pagination -->
+      <div id="blogPagination">
+        <%- include('partials/blog-pagination', { pagination: pagination }) %>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWSLETTER CTA ===================== -->
+  <section class="section cta-wrap">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-blob cta-blob-1"></div>
+        <div class="cta-blob cta-blob-2"></div>
+        <div class="cta-content">
+          <h2 class="cta-title"><%- content.cta_title || 'Never miss a playbook' %></h2>
+          <p><%- content.cta_text || '' %></p>
+          <form class="blog-subscribe js-subscribe">
+            <input type="email" name="email" placeholder="Your email address" aria-label="Your email address" required />
+            <button type="submit" class="btn btn-green btn-lg">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('../partials/footer') %>
+  <script src="/js/blog.js"></script>
+</body>
+</html>

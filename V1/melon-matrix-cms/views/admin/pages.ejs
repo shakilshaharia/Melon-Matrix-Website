@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head') %></head>
+<body>
+<div class="adm-shell">
+  <%- include('partials/sidebar') %>
+  <main class="adm-main">
+    <div class="adm-head">
+      <div><h1>Pages</h1><p class="sub">Edit page text and SEO without touching code</p></div>
+    </div>
+
+    <%- include('partials/flash') %>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Page</th><th>Meta title</th><th>Last updated</th><th></th></tr></thead>
+        <tbody>
+          <% pages.forEach((p) => { %>
+          <tr>
+            <td><span class="row-title"><%= p.title %></span><div class="row-sub">/<%= p.page_key === 'home' ? '' : p.page_key %></div></td>
+            <td><%= p.meta_title || '—' %></td>
+            <td><%= new Date(p.updated_at).toLocaleDateString() %></td>
+            <td><div class="row-actions"><a class="btn btn-outline btn-sm" href="/admin/pages/<%= p.page_key %>">Edit</a></div></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</div>
+</body>
+</html>

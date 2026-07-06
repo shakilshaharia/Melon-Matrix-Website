@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><%- include('partials/head') %></head>
+<body>
+<div class="adm-shell">
+  <%- include('partials/sidebar') %>
+  <main class="adm-main">
+    <div class="adm-head">
+      <div><h1>Site Settings</h1><p class="sub">Contact details, addresses and social links used across the site</p></div>
+    </div>
+
+    <%- include('partials/flash') %>
+
+    <form method="post" action="/admin/settings">
+      <div class="form-grid">
+        <div>
+          <div class="panel">
+            <h3>Brand</h3>
+            <div class="field-row">
+              <div class="field"><label>Site name</label><input type="text" name="site_name" value="<%= values.site_name || '' %>" /></div>
+              <div class="field"><label>Tagline</label><input type="text" name="tagline" value="<%= values.tagline || '' %>" /></div>
+            </div>
+            <div class="field"><label>Footer about text</label><textarea name="footer_about_text"><%= values.footer_about_text || '' %></textarea></div>
+          </div>
+
+          <div class="panel">
+            <h3>Contact</h3>
+            <div class="field-row">
+              <div class="field"><label>Primary email</label><input type="email" name="email_primary" value="<%= values.email_primary || '' %>" /></div>
+              <div class="field"><label>Sales email</label><input type="email" name="email_sales" value="<%= values.email_sales || '' %>" /></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Press email</label><input type="email" name="email_press" value="<%= values.email_press || '' %>" /></div>
+              <div class="field"><label>Working hours</label><input type="text" name="working_hours" value="<%= values.working_hours || '' %>" /></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Primary phone</label><input type="text" name="phone_primary" value="<%= values.phone_primary || '' %>" /></div>
+              <div class="field"><label>Secondary phone</label><input type="text" name="phone_secondary" value="<%= values.phone_secondary || '' %>" /></div>
+            </div>
+            <div class="field-row">
+              <div class="field"><label>Main office phone</label><input type="text" name="main_office_phone" value="<%= values.main_office_phone || '' %>" /></div>
+              <div class="field"><label>Main office email</label><input type="email" name="main_office_email" value="<%= values.main_office_email || '' %>" /></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3>Addresses</h3>
+            <div class="field"><label>Canada office</label><textarea name="address_canada"><%= values.address_canada || '' %></textarea></div>
+            <div class="field"><label>Bangladesh office</label><textarea name="address_bd"><%= values.address_bd || '' %></textarea></div>
+          </div>
+
+          <div class="panel">
+            <h3>Social links</h3>
+            <div class="field"><label>Facebook</label><input type="text" name="facebook_url" value="<%= values.facebook_url || '' %>" /></div>
+            <div class="field"><label>Twitter / X</label><input type="text" name="twitter_url" value="<%= values.twitter_url || '' %>" /></div>
+            <div class="field"><label>Instagram</label><input type="text" name="instagram_url" value="<%= values.instagram_url || '' %>" /></div>
+          </div>
+
+          <div class="panel">
+            <h3>SMTP (outgoing email)</h3>
+            <p class="hint" style="margin-bottom:16px;">Used to send contact-form notifications and any other system email. Leave "Enable SMTP" off to disable outgoing email entirely.</p>
+
+            <div class="gmail-callout">
+              <strong>Using Gmail?</strong> You cannot use your normal Google password here — Gmail blocks it.
+              Turn on <a href="https://myaccount.google.com/security" target="_blank" rel="noopener">2-Step Verification</a>,
+              then generate an <a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noopener">App Password</a>
+              and paste it into the password field below (spaces are fine — they're stripped automatically).
+              Host: <code>smtp.gmail.com</code>, Port: <code>587</code>, username: your full <code>@gmail.com</code> address.
+            </div>
+
+            <label class="toggle-row">
+              <input type="checkbox" name="smtp_enabled" value="1" <%= values.smtp_enabled === '1' ? 'checked' : '' %> />
+              <span>Enable SMTP</span>
+            </label>
+
+            <div class="field-row">
+              <div class="field"><label>SMTP host</label><input type="text" name="smtp_host" value="<%= values.smtp_host || '' %>" placeholder="smtp.gmail.com" /></div>
+              <div class="field"><label>SMTP port</label><input type="text" name="smtp_port" value="<%= values.smtp_port || '587' %>" placeholder="587" /></div>
+            </div>
+
+            <label class="toggle-row">
+              <input type="checkbox" name="smtp_secure" value="1" <%= values.smtp_secure === '1' ? 'checked' : '' %> />
+              <span>Use SSL (port 465) — leave off for STARTTLS on 587</span>
+            </label>
+            <p class="hint" style="margin-top:-10px; margin-bottom:18px;">Port 465 and 587 are auto-corrected either way, so this only matters for non-standard ports.</p>
+
+            <div class="field-row">
+              <div class="field"><label>SMTP username</label><input type="text" name="smtp_user" value="<%= values.smtp_user || '' %>" placeholder="you@gmail.com" /></div>
+              <div class="field">
+                <label>SMTP password <% if (values.smtp_host && /gmail|google/i.test(values.smtp_host)) { %>(App Password)<% } %></label>
+                <input type="password" name="smtp_password" placeholder="<%= values.smtp_password ? '••••••••  (leave blank to keep)' : 'Enter password' %>" autocomplete="new-password" />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field"><label>From name</label><input type="text" name="smtp_from_name" value="<%= values.smtp_from_name || '' %>" placeholder="Melon Matrix" /></div>
+              <div class="field">
+                <label>From email</label>
+                <input type="email" name="smtp_from_email" value="<%= values.smtp_from_email || '' %>" placeholder="Defaults to SMTP username" />
+                <p class="hint">Should usually match the SMTP username above — Gmail and most providers reject or rewrite mismatched From addresses.</p>
+              </div>
+            </div>
+
+            <label class="toggle-row">
+              <input type="checkbox" name="smtp_debug" value="1" <%= values.smtp_debug === '1' ? 'checked' : '' %> />
+              <span>Log the full SMTP conversation to the server console (for troubleshooting)</span>
+            </label>
+
+            <p class="hint">Contact-form notifications are sent to the Primary email above, with Reply-To set to the visitor's email.</p>
+
+            <% if (values.smtp_last_at) { %>
+            <div class="smtp-status <%= values.smtp_last_status === 'ok' ? 'is-ok' : 'is-error' %>">
+              <strong><%= values.smtp_last_status === 'ok' ? '✓ Last attempt succeeded' : '✗ Last attempt failed' %></strong>
+              <span class="smtp-status-time"><%= new Date(values.smtp_last_at).toLocaleString() %></span>
+              <p><%= values.smtp_last_detail || '' %></p>
+            </div>
+            <% } %>
+          </div>
+        </div>
+
+        <div>
+          <div class="panel">
+            <h3>Save</h3>
+            <button type="submit" class="btn btn-green" style="width:100%; justify-content:center;">Save Settings</button>
+            <p class="hint" style="margin-top:10px;">Changes appear on the site within ~30 seconds (settings cache).</p>
+          </div>
+        </div>
+      </div>
+    </form>
+
+    <div class="form-grid">
+      <div>
+        <div class="panel">
+          <h3>Test SMTP</h3>
+          <p class="hint" style="margin-bottom:14px;">Save your SMTP settings above first, then send a test email to confirm they work.</p>
+          <form method="post" action="/admin/settings/test-email" style="display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end;">
+            <div class="field" style="margin:0; flex:1; min-width:220px;">
+              <label>Send test to</label>
+              <input type="email" name="test_email" value="<%= values.email_primary || '' %>" placeholder="you@yourdomain.com" />
+            </div>
+            <button type="submit" class="btn btn-outline">Send Test Email</button>
+          </form>
+        </div>
+      </div>
+      <div></div>
+    </div>
+  </main>
+</div>
+</body>
+</html>

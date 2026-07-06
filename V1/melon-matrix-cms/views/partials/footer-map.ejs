@@ -1,0 +1,24 @@
+<!-- ===================== FOOTER MAP ===================== -->
+<section class="footer-map">
+  <div class="container">
+    <div class="map-inner">
+      <div class="loc-card loc-left">
+        <h4>Mississauga, Canada</h4>
+        <p><%- (settings.address_canada || "77 City Centre Drive\nMississauga, ON L5B 1M5, Canada").split("\n").join("<br />") %></p>
+        <a href="mailto:<%= settings.email_primary || 'hello@melonmatrix.com' %>" class="loc-link"><%= settings.email_primary || 'hello@melonmatrix.com' %></a>
+      </div>
+
+      <svg class="map-line" viewBox="0 0 800 140" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M20,90 C250,10 550,160 780,70" fill="none" stroke="#3DD07A" stroke-width="2" stroke-dasharray="6 8" />
+        <circle cx="20" cy="90" r="7" fill="#3DD07A" />
+        <circle cx="780" cy="70" r="7" fill="#3DD07A" />
+      </svg>
+
+      <div class="loc-card loc-right">
+        <h4>Cox's Bazar, Bangladesh</h4>
+        <p><%- (settings.address_bd || "New Circuit House Rd\nCox's Bazar-4700").split("\n").join("<br />") %></p>
+        <a href="tel:<%= (settings.phone_secondary || '01584006977').replace(/[^0-9+]/g, '') %>" class="loc-link">Phone: <%= settings.phone_secondary || '015-840-06977' %></a>
+      </div>
+    </div>
+  </div>
+</section>

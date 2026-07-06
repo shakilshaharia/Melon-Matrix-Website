@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%- include('../partials/head') %>
+</head>
+<body>
+
+  <%- include('../partials/icons') %>
+  <%- include('../partials/navbar') %>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow eyebrow-white"><%- content.hero_eyebrow || 'WE BUILD. YOU GROW.' %></p>
+        <h1 class="hero-title"><%- content.hero_title || 'Performance Driven <br />Digital Solutions.' %></h1>
+        <p class="hero-sub"><%- content.hero_sub || 'From strategy to execution, we help brands <br />grow smarter and scale faster.' %></p>
+        <div class="hero-actions">
+          <a href="#cta" class="btn btn-green btn-arrow"><%= content.hero_btn_primary || 'Book A Quick Call' %> <span class="arrow-circle">→</span></a>
+          <a href="#services" class="btn btn-ghost"><%= content.hero_btn_secondary || 'Explore Solutions' %> <span>→</span></a>
+        </div>
+        <div class="hero-trusted">
+          <span class="trusted-avatars" aria-hidden="true">
+            <img src="/assets/avatars/p1.jpg" alt="" class="t-avatar" />
+            <img src="/assets/avatars/p2.jpg" alt="" class="t-avatar" />
+            <img src="/assets/avatars/p3.jpg" alt="" class="t-avatar" />
+          </span>
+          <span class="trusted-text"><%= content.trusted_text || 'Trusted by 1,000+ businesses worldwide' %></span>
+        </div>
+      </div>
+      <div class="hero-art">
+        <span class="hero-orbit" aria-hidden="true"></span>
+
+        <span class="float-logo fl-shopify" aria-hidden="true">
+          <svg viewBox="0 0 256 292" xmlns="http://www.w3.org/2000/svg"><path fill="#95BF47" d="M223.774 57.34c-.201-1.46-1.48-2.268-2.537-2.357-1.055-.088-23.383-1.743-23.383-1.743s-15.507-15.395-17.209-17.099c-1.703-1.703-5.029-1.185-6.32-.805-.19.056-3.388 1.043-8.678 2.68-5.18-14.906-14.322-28.604-30.405-28.604-.444 0-.901.018-1.358.044C129.31 3.407 123.644.779 118.75.779c-37.465 0-55.364 46.835-60.976 70.635-14.558 4.511-24.9 7.718-26.221 8.133-8.126 2.549-8.383 2.805-9.45 10.462C21.3 95.806.038 260.235.038 260.235l165.678 31.042 89.77-19.42S223.973 58.8 223.774 57.34zM156.49 40.848l-14.019 4.339c.005-.988.01-1.96.01-3.023 0-9.264-1.286-16.723-3.349-22.636 8.287 1.04 13.806 10.469 17.358 21.32zm-27.638-19.483c2.304 5.773 3.802 14.058 3.802 25.238 0 .572-.005 1.095-.01 1.624-9.117 2.824-19.024 5.89-28.953 8.966 5.575-21.516 16.025-31.908 25.161-35.828zm-11.131-10.537c1.617 0 3.246.549 4.805 1.622-12.007 5.65-24.877 19.88-30.312 48.297l-22.886 7.088C75.694 46.16 90.81 10.828 117.72 10.828z"/><path fill="#5E8E3E" d="M221.237 54.983c-1.055-.088-23.383-1.743-23.383-1.743s-15.507-15.395-17.209-17.099c-.637-.634-1.496-.959-2.394-1.099l-12.527 256.233 89.762-19.418S223.972 58.8 223.774 57.34c-.201-1.46-1.48-2.268-2.537-2.357z"/><path fill="#FFF" d="M135.242 104.585l-11.069 32.926s-9.698-5.176-21.586-5.176c-17.428 0-18.305 10.937-18.305 13.693 0 15.038 39.2 20.8 39.2 56.024 0 27.713-17.577 45.558-41.277 45.558-28.44 0-42.984-17.7-42.984-17.7l7.615-25.16s14.95 12.835 27.565 12.835c8.243 0 11.596-6.49 11.596-11.232 0-19.616-32.16-20.491-32.16-52.724 0-27.129 19.472-53.382 58.778-53.382 15.145 0 22.627 4.338 22.627 4.338z"/></svg>
+        </span>
+
+        <span class="float-logo fl-meta" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="#0081FB" xmlns="http://www.w3.org/2000/svg"><path d="M6.915 4.03c-1.968 0-3.683 1.28-4.871 3.113C.704 9.208 0 11.883 0 14.449c0 .706.07 1.369.21 1.973a6.624 6.624 0 0 0 .265.86 5.297 5.297 0 0 0 .371.761c.696 1.159 1.818 1.927 3.593 1.927 1.497 0 2.633-.671 3.965-2.444.76-1.012 1.144-1.626 2.663-4.32l.756-1.339.186-.325c.061.1.121.196.183.3l2.152 3.595c.724 1.21 1.665 2.556 2.47 3.314 1.046.987 1.992 1.22 3.06 1.22 1.075 0 1.876-.355 2.455-.843a3.743 3.743 0 0 0 .81-.973c.542-.939.861-2.127.861-3.745 0-2.72-.681-5.357-2.084-7.45-1.282-1.912-2.957-2.93-4.716-2.93-1.047 0-2.088.467-3.053 1.308-.652.57-1.257 1.29-1.82 2.05-.69-.875-1.335-1.547-1.958-2.056-1.182-.966-2.315-1.303-3.454-1.303zm10.16 2.053c1.147 0 2.188.758 2.992 1.999 1.132 1.748 1.647 4.195 1.647 6.4 0 1.548-.368 2.9-1.839 2.9-.58 0-1.027-.23-1.664-1.004-.496-.601-1.343-1.878-2.832-4.358l-.617-1.028a44.908 44.908 0 0 0-1.255-1.98c.07-.109.141-.224.211-.327 1.12-1.667 2.118-2.602 3.149-2.602zm-10.61.973c.857 0 1.654.412 2.379 1.097.715.676 1.318 1.522 1.97 2.539l.751 1.146c.117.18.234.358.351.535-.482.766-1.012 1.589-1.601 2.4-1.41 1.93-2.176 2.412-3.222 2.412-1.06 0-1.612-.95-1.612-2.847 0-2.31.683-4.74 1.847-6.61.247-.396.51-.733.787-1.005a3.078 3.078 0 0 1 .222-.212z"/></svg>
+        </span>
+
+        <span class="float-logo fl-linkedin" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="#0A66C2" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>
+        </span>
+
+        <span class="float-logo fl-google" aria-hidden="true">
+          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238C29.211 35.091 26.715 36 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303c-.792 2.237-2.231 4.166-4.087 5.571l6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
+        </span>
+
+        <span class="spark sp1" aria-hidden="true"></span>
+        <span class="spark sp2" aria-hidden="true"></span>
+        <span class="spark sp3" aria-hidden="true"></span>
+        <span class="spark sp4" aria-hidden="true"></span>
+        <span class="spark sp5" aria-hidden="true"></span>
+
+        <img class="hero-mascot" src="/assets/robot.png" alt="Melon Matrix AI mascot" />
+      </div>
+    </div>
+    <div class="container">
+      <div class="hero-marquee">
+        <div class="marquee-track">
+          <!-- copy 1 -->
+          <img class="m-logo" src="/assets/clients/w-1.png" alt="capintel" />
+          <img class="m-logo" src="/assets/clients/client-2.svg" alt="AgentSense" />
+          <img class="m-logo" src="/assets/clients/w-3.png" alt="Hossain Brothers" />
+          <img class="m-logo" src="/assets/clients/w-4.png" alt="Visible Commerce Connection" />
+          <img class="m-logo" src="/assets/clients/client-5.webp" alt="incepta" />
+          <img class="m-logo" src="/assets/clients/w-6.png" alt="Muntaha CPA" />
+          <img class="m-logo" src="/assets/clients/w-10.png" alt="Physio Square" />
+          <img class="m-logo" src="/assets/clients/w-12.png" alt="Polac" />
+          <img class="m-logo" src="/assets/clients/w-14.png" alt="Thinklogix" />
+          <img class="m-logo" src="/assets/clients/w-17.png" alt="Creedgroup" />
+          <img class="m-logo" src="/assets/clients/w-18.png" alt="Millennium Information Solution" />
+          <img class="m-logo" src="/assets/clients/w-19.png" alt="Ecosense Resort" />
+          <!-- copy 2 (duplicate for seamless loop) -->
+          <img class="m-logo" src="/assets/clients/w-1.png" alt="" aria-hidden="true" />
+          <img class="m-logo" src="/assets/clients/client-2.svg" alt="" aria-hidden="true" />
+          <img class="m-logo" src="/assets/clients/w-3.png" alt="" aria-hidden="true" />
+          <img class="m-logo" src="/assets/clients/w-4.png" alt="" aria-hidden="true" />
+          <img class="m-logo" src="/assets/clients/client-5.webp" alt="" aria-hidden="true" />
+          <img class="m-logo" src="/assets/clients/w-6.png" alt="" aria-hidden="true" />
+          <img class="m-logo" src="/assets/clients/w-10.png" alt="" aria-hidden="true" />
+          <img class="m-logo" src="/assets/clients/w-12.png" alt="" aria-hidden="true" />
+          <img class="m-logo" src="/assets/clients/w-14.png" alt="" aria-hidden="true" />
+          <img class="m-logo" src="/assets/clients/w-17.png" alt="" aria-hidden="true" />
+          <img class="m-logo" src="/assets/clients/w-18.png" alt="" aria-hidden="true" />
+          <img class="m-logo" src="/assets/clients/w-19.png" alt="" aria-hidden="true" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== DRIVING / SERVICES ===================== -->
+  <section class="section driving" id="services">
+    <div class="container driving-grid">
+      <div class="driving-left">
+        <p class="eyebrow eyebrow-green"><%- content.driving_eyebrow || 'B2B GROWTH. ENGINEERED.' %></p>
+        <h2 class="h2"><%- content.driving_title || 'Driving a Better Way of Doing Marketing to Help You <em>Succeed.</em>' %></h2>
+        <p class="lead"><%- content.driving_lead || '' %></p>
+        <a href="#cta" class="btn btn-green btn-arrow"><%= content.driving_btn || 'Book A Quick Call' %> <span class="arrow-circle">→</span></a>
+
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-num"><%= content.stat1_num || '45%' %></span>
+            <span class="stat-label"><%= content.stat1_label || 'MORE PIPELINE' %></span>
+            <span class="stat-desc"><%= content.stat1_desc || '' %></span>
+          </div>
+          <div class="stat">
+            <span class="stat-num"><%= content.stat2_num || '75%' %></span>
+            <span class="stat-label"><%= content.stat2_label || 'LOWER IN-HOUSE EXECUTION COST' %></span>
+            <span class="stat-desc"><%= content.stat2_desc || '' %></span>
+          </div>
+          <div class="stat">
+            <span class="stat-num"><%= content.stat3_num || '50+' %></span>
+            <span class="stat-label"><%= content.stat3_label || 'B2B CLIENTS' %></span>
+            <span class="stat-desc"><%= content.stat3_desc || '' %></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="driving-right">
+        <h3 class="services-title"><%= content.services_title || 'Our services' %></h3>
+        <div class="services-grid">
+          <a class="svc-card" href="/contact"><span class="svc-ico"><svg class="ico"><use href="#i-monitor"/></svg></span><span class="svc-name">Web Design &amp; Development</span><span class="svc-arrow">→</span></a>
+          <a class="svc-card" href="/contact"><span class="svc-ico"><svg class="ico"><use href="#i-bag"/></svg></span><span class="svc-name">Shopify (Everything)</span><span class="svc-arrow">→</span></a>
+          <a class="svc-card" href="/contact"><span class="svc-ico"><svg class="ico"><use href="#i-trending"/></svg></span><span class="svc-name">Performance Marketing</span><span class="svc-arrow">→</span></a>
+          <a class="svc-card" href="/contact"><span class="svc-ico"><svg class="ico"><use href="#i-settings"/></svg></span><span class="svc-name">Marketing Automation</span><span class="svc-arrow">→</span></a>
+          <a class="svc-card" href="/contact"><span class="svc-ico"><svg class="ico"><use href="#i-search"/></svg></span><span class="svc-name">SEO &amp; Organic Growth</span><span class="svc-arrow">→</span></a>
+          <a class="svc-card" href="/contact"><span class="svc-ico"><svg class="ico"><use href="#i-edit"/></svg></span><span class="svc-name">Content Marketing</span><span class="svc-arrow">→</span></a>
+          <a class="svc-card" href="/contact"><span class="svc-ico"><svg class="ico"><use href="#i-share"/></svg></span><span class="svc-name">Social Media Growth</span><span class="svc-arrow">→</span></a>
+          <a class="svc-card" href="/contact"><span class="svc-ico"><svg class="ico"><use href="#i-pen"/></svg></span><span class="svc-name">Brand Design &amp; UI/UX</span><span class="svc-arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SHOPIFY STORIES THAT SCALE ===================== -->
+  <section class="section stories">
+    <div class="container stories-grid">
+      <div class="stories-art">
+        <img src="/assets/dashboard.png" alt="Shopify admin dashboard showing growing revenue" />
+      </div>
+      <div class="stories-copy">
+        <p class="eyebrow eyebrow-green"><%- content.stories_eyebrow || 'SHOPIFY, GROWTH ENGINE.' %></p>
+        <h2 class="h2"><%- content.stories_title || 'We build Shopify <br /><em>stories that scale.</em>' %></h2>
+        <p class="lead"><%- content.stories_lead || '' %></p>
+        <a href="#cta" class="btn btn-red"><%= content.stories_btn || 'Book a Free Audit' %></a>
+        <div class="mini-features">
+          <div class="mini-feat"><span class="mini-ico"><svg class="ico"><use href="#i-trending"/></svg></span><span>Conversion<br />Focused</span></div>
+          <div class="mini-feat"><span class="mini-ico"><svg class="ico"><use href="#i-zap"/></svg></span><span>Built for<br />Speed</span></div>
+          <div class="mini-feat"><span class="mini-ico"><svg class="ico"><use href="#i-shield"/></svg></span><span>Scalable<br />Growth</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SHOPIFY SYSTEMS BUILT FOR GROWTH ===================== -->
+  <section class="section systems" id="systems">
+    <div class="container">
+      <div class="systems-head">
+        <div>
+          <h2 class="h2"><%- content.systems_title || 'Shopify Systems <br />Built for <em>Growth</em>' %></h2>
+          <p class="lead"><%- content.systems_lead || '' %></p>
+        </div>
+        <div class="systems-cards">
+          <span class="sc-badge"><img src="/assets/shopify.png" alt="Shopify" /></span>
+          <div class="sc-main">
+            <span class="sc-label">Total revenue</span>
+            <div class="sc-rev"><strong>$248,420</strong><span class="sc-up">↑ 28%</span></div>
+            <div class="sc-plot">
+              <div class="sc-yaxis"><span>$300k</span><span>$150k</span><span>$0</span></div>
+              <svg class="sc-graph" viewBox="0 0 320 150" preserveAspectRatio="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="revFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#22c55e" stop-opacity=".22" />
+                    <stop offset="1" stop-color="#22c55e" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+                <path fill="url(#revFill)" d="M0,120 L25,112 L48,118 L72,96 L95,103 L120,82 L145,90 L168,70 L190,60 L215,73 L240,46 L262,56 L286,32 L310,14 L320,14 L320,150 L0,150 Z" />
+                <path fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M0,120 L25,112 L48,118 L72,96 L95,103 L120,82 L145,90 L168,70 L190,60 L215,73 L240,46 L262,56 L286,32 L310,14" />
+                <circle cx="310" cy="14" r="6" fill="#16a34a" />
+              </svg>
+            </div>
+            <div class="sc-xaxis"><span>Apr 1</span><span>Apr 15</span></div>
+          </div>
+          <div class="sc-small">
+            <strong>3.64%</strong><span class="sc-up">↑ 18%</span>
+          </div>
+          <div class="sc-mini">
+            <svg viewBox="0 0 140 60" preserveAspectRatio="none" aria-hidden="true">
+              <path fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="M4,48 L24,44 L40,50 L58,34 L74,40 L92,22 L110,30 L128,10 L136,6" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="cards-4">
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-cart"/></svg></span>
+          <span class="gc-num">01</span>
+          <h3>Conversion-First Storefronts</h3>
+          <p>Custom Shopify and Shopify Plus stores designed for speed, clarity, mobile shopping, and higher conversion.</p>
+          <a href="/contact" class="gc-link">Explore Storefronts →</a>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-grid"/></svg></span>
+          <span class="gc-num">02</span>
+          <h3>Custom Shopify Apps</h3>
+          <p>Custom Shopify and Shopify Plus mobile shopping, and higher conversion.</p>
+          <a href="/contact" class="gc-link">Explore Storefronts →</a>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-cloud"/></svg></span>
+          <span class="gc-num">03</span>
+          <h3>Seamless Migration</h3>
+          <p>Custom Shopify and Shopify Plus stores designed for speed, clarity, mobile shopping, and higher conversion.</p>
+          <a href="/contact" class="gc-link">Explore Storefronts →</a>
+        </div>
+        <div class="growth-card">
+          <span class="gc-ico"><svg class="ico"><use href="#i-bar"/></svg></span>
+          <span class="gc-num">04</span>
+          <h3>Growth &amp; Optimization</h3>
+          <p>Ongoing CRO, speed tuning, and ROI-driven marketing that compounds after launch.</p>
+          <a href="/contact" class="gc-link">Explore Storefronts →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE MATRIX GROWTH ENGINE ===================== -->
+  <section class="section engine">
+    <div class="container">
+      <h2 class="h2 center"><%- content.engine_title || 'The Matrix <em>growth</em> engine' %></h2>
+      <p class="lead center"><%- content.engine_lead || '' %></p>
+
+      <div class="engine-grid">
+        <div class="engine-steps" id="engineSteps">
+          <div class="step active">
+            <span class="step-num">01</span>
+            <button class="step-body" type="button">
+              <h4>Discover</h4>
+              <div class="step-desc"><p>Strategy, creative and optimization -built to grow your brand.</p></div>
+            </button>
+          </div>
+          <div class="step">
+            <span class="step-num">02</span>
+            <button class="step-body" type="button">
+              <h4>Create</h4>
+              <div class="step-desc"><p>We design and build conversion-focused experiences that bring your strategy to life.</p></div>
+            </button>
+          </div>
+          <div class="step">
+            <span class="step-num">03</span>
+            <button class="step-body" type="button">
+              <h4>Scale</h4>
+              <div class="step-desc"><p>We optimize, test, and grow what works—turning momentum into sustainable growth.</p></div>
+            </button>
+          </div>
+        </div>
+
+        <div class="engine-art">
+          <img src="/assets/growth_engine.png" alt="Melon Matrix growth engine diagram" />
+        </div>
+
+        <div class="engine-outcomes">
+          <div class="outcome">More Visibility</div>
+          <div class="outcome">Better Conversions</div>
+          <div class="outcome">Higher ROI</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== WE FIX WHAT'S COSTING YOU SALES ===================== -->
+  <section class="section fix">
+    <div class="container">
+      <div class="fix-box">
+        <h2 class="fix-title"><%- content.fix_title || 'We Fix What\'s <span class="text-red">Costing You Sales</span>' %></h2>
+        <p><%- content.fix_text || '' %></p>
+        <a href="#cta" class="btn btn-green"><%= content.fix_btn || 'Book an Assessment' %></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PRICING / MAXIMIZE IMPACT ===================== -->
+  <section class="section pricing" id="pricing">
+    <div class="container pricing-grid">
+      <div class="pricing-left">
+        <h2 class="h2"><%- content.pricing_title || 'Maximize Your <br />Business <em>Impact</em>' %></h2>
+        <p class="lead"><%- content.pricing_lead || '' %></p>
+        <ul class="pricing-tabs">
+          <li class="active" data-cat="digital-marketing"><span class="dot"></span> Digital Marketing</li>
+          <li data-cat="shopify"><span class="dot"></span> Shopify</li>
+          <li data-cat="web-development"><span class="dot"></span> Web Development</li>
+        </ul>
+      </div>
+
+      <div class="plans-wrap">
+        <!-- Digital Marketing -->
+        <div class="plan-set active" data-cat="digital-marketing">
+          <div class="plan">
+            <h3 class="plan-name">Basic Package</h3>
+            <p class="plan-for">Ideal for individuals who need quick access to basic features.</p>
+            <div class="plan-price">$2000<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>20,000+ of PNG &amp; SVG graphics</li>
+              <li>Access to 100 million stock images</li>
+              <li>Upload custom icons and fonts</li>
+              <li>Unlimited Sharing</li>
+              <li>Upload graphics &amp; videos up to 4k</li>
+              <li>Unlimited Projects</li>
+              <li>Internal Access to our design system</li>
+              <li>Enable teams to collaborate on designs</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline-dark plan-btn">Get Started</a>
+          </div>
+          <div class="plan plan-featured">
+            <span class="badge">MOST POPULAR</span>
+            <h3 class="plan-name">Growth Package</h3>
+            <p class="plan-for">For startups and small teams that need scalable, conversion-ready campaigns.</p>
+            <div class="plan-price">$2500<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Everything in Basic with</li>
+              <li>Multi-channel ad management</li>
+              <li>SEO &amp; content strategy</li>
+              <li>Email &amp; automation setup</li>
+              <li>Conversion tracking &amp; analytics</li>
+              <li>Monthly performance reporting</li>
+              <li>Dedicated strategist</li>
+            </ul>
+            <a href="/contact" class="btn btn-red plan-btn">Get Started</a>
+          </div>
+          <div class="plan">
+            <h3 class="plan-name">Signature Package</h3>
+            <p class="plan-for">Ideal for businesses needing personalized services and security for large teams.</p>
+            <div class="plan-price">$3500<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Everything in Growth with</li>
+              <li>Full-funnel growth strategy</li>
+              <li>Paid social &amp; PPC at scale</li>
+              <li>CRO &amp; A/B testing program</li>
+              <li>Custom dashboards &amp; reporting</li>
+              <li>Priority support</li>
+              <li>Quarterly strategy reviews</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline-dark plan-btn">Get Started</a>
+          </div>
+        </div>
+
+        <!-- Shopify -->
+        <div class="plan-set" data-cat="shopify">
+          <div class="plan">
+            <h3 class="plan-name">Basic Package</h3>
+            <p class="plan-for">Ideal for new stores that need a clean, fast Shopify setup.</p>
+            <div class="plan-price">$1500<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Theme setup &amp; configuration</li>
+              <li>Product upload (up to 50)</li>
+              <li>Essential apps installation</li>
+              <li>Mobile-responsive design</li>
+              <li>Payment &amp; shipping setup</li>
+              <li>Basic on-page SEO</li>
+              <li>1 round of revisions</li>
+              <li>Email support</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline-dark plan-btn">Get Started</a>
+          </div>
+          <div class="plan plan-featured">
+            <span class="badge">MOST POPULAR</span>
+            <h3 class="plan-name">Growth Package</h3>
+            <p class="plan-for">For brands ready to scale with a conversion-focused storefront.</p>
+            <div class="plan-price">$2500<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Everything in Basic with</li>
+              <li>Custom theme development</li>
+              <li>Unlimited product upload</li>
+              <li>Conversion-focused UX</li>
+              <li>Advanced apps integration</li>
+              <li>Speed &amp; performance tuning</li>
+              <li>QA testing &amp; launch support</li>
+            </ul>
+            <a href="/contact" class="btn btn-red plan-btn">Get Started</a>
+          </div>
+          <div class="plan">
+            <h3 class="plan-name">Signature Package</h3>
+            <p class="plan-for">For high-volume merchants needing Shopify Plus power.</p>
+            <div class="plan-price">$4000<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Everything in Growth with</li>
+              <li>Shopify Plus development</li>
+              <li>Custom checkout experience</li>
+              <li>Headless commerce ready</li>
+              <li>Dedicated account manager</li>
+              <li>Priority 24/7 support</li>
+              <li>Ongoing optimization</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline-dark plan-btn">Get Started</a>
+          </div>
+        </div>
+
+        <!-- Web Development -->
+        <div class="plan-set" data-cat="web-development">
+          <div class="plan">
+            <h3 class="plan-name">Basic Package</h3>
+            <p class="plan-for">Ideal for individuals and small businesses launching online.</p>
+            <div class="plan-price">$1800<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Responsive website (up to 5 pages)</li>
+              <li>Custom UI design</li>
+              <li>CMS integration</li>
+              <li>Contact &amp; lead forms</li>
+              <li>Basic on-page SEO</li>
+              <li>Cross-browser testing</li>
+              <li>2 rounds of revisions</li>
+              <li>30-day support</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline-dark plan-btn">Get Started</a>
+          </div>
+          <div class="plan plan-featured">
+            <span class="badge">MOST POPULAR</span>
+            <h3 class="plan-name">Growth Package</h3>
+            <p class="plan-for">For growing teams that need a custom web platform.</p>
+            <div class="plan-price">$3000<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Everything in Basic with</li>
+              <li>Up to 15 custom pages</li>
+              <li>Custom web app features</li>
+              <li>Third-party API integrations</li>
+              <li>Performance optimization</li>
+              <li>Analytics &amp; tracking setup</li>
+              <li>60-day priority support</li>
+            </ul>
+            <a href="/contact" class="btn btn-red plan-btn">Get Started</a>
+          </div>
+          <div class="plan">
+            <h3 class="plan-name">Signature Package</h3>
+            <p class="plan-for">For enterprises needing a full, scalable custom build.</p>
+            <div class="plan-price">$4500<span>/Month</span></div>
+            <ul class="plan-feats">
+              <li>Everything in Growth with</li>
+              <li>Unlimited pages</li>
+              <li>Custom backend development</li>
+              <li>Database architecture</li>
+              <li>Advanced integrations</li>
+              <li>Dedicated dev team</li>
+              <li>Priority SLA support</li>
+            </ul>
+            <a href="/contact" class="btn btn-outline-dark plan-btn">Get Started</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CASE STUDY ===================== -->
+  <section class="section case" id="case">
+    <div class="container case-grid">
+      <div class="case-left">
+        <p class="eyebrow eyebrow-green"><%- content.case_eyebrow || 'PROVEN RESULTS' %></p>
+        <h2 class="h2"><%- content.case_title || 'Case Study' %></h2>
+        <p class="lead"><%- content.case_lead || '' %></p>
+        <p class="lead"><%- content.case_lead2 || '' %></p>
+        <a href="/blog/category/case-study" class="btn btn-red btn-arrow"><%= content.case_btn || 'View case study' %> <span class="arrow-circle arrow-light">→</span></a>
+      </div>
+
+      <div class="case-carousel">
+        <div class="case-viewport">
+          <div class="case-track" id="caseTrack">
+
+            <div class="case-card">
+              <a href="/blog/agentsense-emea-expansion" class="case-media">
+                <img src="/assets/case_robot.png" alt="AgentSense case study" />
+                <span class="case-tag">AgentSense</span>
+              </a>
+              <div class="case-body">
+                <h3><a href="/blog/agentsense-emea-expansion">AgentSense – Expanding into EMEA with Precision B2B Marketing</a></h3>
+                <p>A targeted outbound system designed to unlock new-market pipeline with higher-quality conversations.</p>
+                <div class="case-stats">
+                  <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-globe"/></svg></span><strong>EMEA Expansion</strong><small>New markets entered</small></div>
+                  <div><span class="cs-ico cs-red"><svg class="ico"><use href="#i-target"/></svg></span><strong>Precision Targeting</strong><small>ICP-aligned outreach</small></div>
+                  <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-trending"/></svg></span><strong>Qualified Pipeline</strong><small>Higher conversion quality</small></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="case-card">
+              <a href="/blog/northwind-retail-shopify-rebuild" class="case-media">
+                <img src="/assets/dashboard.png" alt="Northwind Retail case study" />
+                <span class="case-tag">Northwind Retail</span>
+              </a>
+              <div class="case-body">
+                <h3><a href="/blog/northwind-retail-shopify-rebuild">Northwind Retail – A Shopify Rebuild That Lifted Conversion 32%</a></h3>
+                <p>A conversion-first replatform that turned a slow storefront into a revenue machine in a single quarter.</p>
+                <div class="case-stats">
+                  <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-trending"/></svg></span><strong>+32% Conversion</strong><small>First quarter after launch</small></div>
+                  <div><span class="cs-ico cs-red"><svg class="ico"><use href="#i-zap"/></svg></span><strong>2× Faster</strong><small>Store load speed</small></div>
+                  <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-bar"/></svg></span><strong>Record Revenue</strong><small>Two months running</small></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="case-card">
+              <a href="/blog/lumen-apparel-migration" class="case-media">
+                <img src="/assets/growth_engine.png" alt="Lumen Apparel case study" />
+                <span class="case-tag">Lumen Apparel</span>
+              </a>
+              <div class="case-body">
+                <h3><a href="/blog/lumen-apparel-migration">Lumen Apparel – Seamless Migration to a Faster Storefront</a></h3>
+                <p>A full replatform from migration to launch that preserved SEO while slashing cart abandonment.</p>
+                <div class="case-stats">
+                  <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-cloud"/></svg></span><strong>Zero Downtime</strong><small>Seamless migration</small></div>
+                  <div><span class="cs-ico cs-red"><svg class="ico"><use href="#i-cart"/></svg></span><strong>Lower Abandonment</strong><small>Cleaner checkout flow</small></div>
+                  <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-trending"/></svg></span><strong>Sales Up</strong><small>Post-launch growth</small></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="case-card">
+              <a href="/blog/verde-goods-full-funnel-growth" class="case-media">
+                <img src="/assets/robot.png" alt="Verde Goods case study" />
+                <span class="case-tag">Verde Goods</span>
+              </a>
+              <div class="case-body">
+                <h3><a href="/blog/verde-goods-full-funnel-growth">Verde Goods – Full-Funnel Growth Built on Data</a></h3>
+                <p>Strategy, creative, and optimization working as one system to drive record revenue and a brand that finally looks the part.</p>
+                <div class="case-stats">
+                  <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-bar"/></svg></span><strong>Data-Driven</strong><small>Every decision measured</small></div>
+                  <div><span class="cs-ico cs-red"><svg class="ico"><use href="#i-target"/></svg></span><strong>Full-Funnel</strong><small>Top to bottom of funnel</small></div>
+                  <div><span class="cs-ico cs-green"><svg class="ico"><use href="#i-trending"/></svg></span><strong>Record Revenue</strong><small>Two months running</small></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="section testimonials">
+    <div class="container">
+      <div class="testi-head">
+        <div class="testi-arrows">
+          <button class="t-arrow" id="tPrev" aria-label="Previous">‹</button>
+          <button class="t-arrow t-arrow-red" id="tNext" aria-label="Next">›</button>
+        </div>
+        <div class="testi-title-wrap">
+          <h2 class="h2"><%- content.testi_title || 'What <span class="text-red">Our Clients</span> Say' %></h2>
+          <p class="lead"><%- content.testi_lead || '' %></p>
+        </div>
+      </div>
+
+      <div class="testi-viewport">
+        <div class="testi-track" id="testiTrack">
+          <article class="testi-card">
+            <div class="stars">★★★★★</div>
+            <span class="quote-mark">&ldquo;</span>
+            <p>Integrating leezyAI has been a game-changer for our customer support workflow. We've seen a 40% decrease in response times and a significant uptick in customer satisfaction scores. The AI's ability to understand and process complex queries has freed our team to handle more nuanced issues.</p>
+            <div class="testi-person">
+              <span class="avatar av-1"></span>
+              <div><strong>John Doe</strong><small>Head of Customer Experience at FinTech Global</small></div>
+            </div>
+          </article>
+          <article class="testi-card">
+            <div class="stars">★★★★★</div>
+            <span class="quote-mark">&ldquo;</span>
+            <p>leezyAI's chatbot isn't just another tool; it's like having a highly skilled assistant that's learning and improving every day. Our customers love the instant and accurate information it provides, and we've been thrilled with the deep insights into our customer interactions.</p>
+            <div class="testi-person">
+              <span class="avatar av-2"></span>
+              <div><strong>Elijah Ramirez</strong><small>Director of Operations at EcoHome Solutions</small></div>
+            </div>
+          </article>
+          <article class="testi-card">
+            <div class="stars">★★★★★</div>
+            <span class="quote-mark">&ldquo;</span>
+            <p>Working with Melon Matrix completely transformed our Shopify store. Conversion rate jumped 32% in the first quarter, and their team felt like a true extension of ours—responsive, strategic, and genuinely invested in our growth.</p>
+            <div class="testi-person">
+              <span class="avatar av-3"></span>
+              <div><strong>Sarah Chen</strong><small>VP of Marketing at Northwind Retail</small></div>
+            </div>
+          </article>
+          <article class="testi-card">
+            <div class="stars">★★★★★</div>
+            <span class="quote-mark">&ldquo;</span>
+            <p>From migration to launch the process was seamless. Our new storefront is faster, cleaner, and our customers feel it. Sales are up, cart abandonment is down, and the support has been first-class throughout.</p>
+            <div class="testi-person">
+              <span class="avatar av-4"></span>
+              <div><strong>Marcus Bennett</strong><small>Founder at Lumen Apparel</small></div>
+            </div>
+          </article>
+          <article class="testi-card">
+            <div class="stars">★★★★★</div>
+            <span class="quote-mark">&ldquo;</span>
+            <p>The attention to detail and data-driven approach set them apart. Every decision was backed by insight, and the results speak for themselves—record revenue two months running and a brand that finally looks the part.</p>
+            <div class="testi-person">
+              <span class="avatar av-5"></span>
+              <div><strong>Aisha Khan</strong><small>Head of E-commerce at Verde Goods</small></div>
+            </div>
+          </article>
+          <article class="testi-card">
+            <div class="stars">★★★★☆</div>
+            <span class="quote-mark">&ldquo;</span>
+            <p>They don't just build, they partner. Melon Matrix understood our goals from day one and delivered a site that scales with us. Easily the best agency experience we've had to date.</p>
+            <div class="testi-person">
+              <span class="avatar av-6"></span>
+              <div><strong>David Okafor</strong><small>CEO at Bright Lane Co.</small></div>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="testi-dots" id="testiDots"></div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="section faq" id="about">
+    <div class="container">
+      <h2 class="h2 center faq-title"><%- content.faq_title || 'FAQ' %></h2>
+      <p class="lead center"><%- content.faq_lead || '' %></p>
+
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-q"><span class="faq-tag">MCPC</span><span class="faq-pill">Canada Toronto</span><span class="faq-text">Dive into our success stories and see how we create impactful solutions</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Dive into our success stories and see how we create impactful solutions for brands across industries, from Shopify storefronts to full-funnel B2B campaigns.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-tag">MCPC</span><span class="faq-pill">Canada Toronto</span><span class="faq-text">Dive into our success stories and see how we create impactful solutions</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Dive into our success stories and see how we create impactful solutions for brands across industries.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-tag">MCPC</span><span class="faq-pill">Canada Toronto</span><span class="faq-text">Dive into our success stories and see how we create impactful solutions</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Dive into our success stories and see how we create impactful solutions for brands across industries.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-tag">MCPC</span><span class="faq-pill">Canada Toronto</span><span class="faq-text">Dive into our success stories and see how we create impactful solutions</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Dive into our success stories and see how we create impactful solutions for brands across industries.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q"><span class="faq-tag">MCPC</span><span class="faq-pill">Canada Toronto</span><span class="faq-text">Dive into our success stories and see how we create impactful solutions</span><span class="faq-chevron"><svg class="ico"><use href="#i-chevron"/></svg></span></button>
+          <div class="faq-a"><p>Dive into our success stories and see how we create impactful solutions for brands across industries.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TRUSTED BY ===================== -->
+  <section class="section trusted">
+    <div class="container trusted-grid">
+      <h2 class="h2 trusted-title"><%- content.trusted_title || 'Trusted by our <br /><em>customers</em> &amp; partners' %></h2>
+      <div class="trusted-logos">
+        <!-- Row 1: right -> left -->
+        <div class="logo-row">
+          <div class="logo-row-track track-rtl">
+            <img class="t-logo" src="/assets/trusted/t-11.png" alt="capintel" />
+            <img class="t-logo" src="/assets/trusted/t-2.svg" alt="AgentSense" />
+            <img class="t-logo" src="/assets/trusted/t-3.png" alt="Hossain Brothers" />
+            <img class="t-logo" src="/assets/trusted/t-7.png" alt="Visible Commerce Connection" />
+            <img class="t-logo" src="/assets/trusted/t-5.webp" alt="incepta" />
+            <img class="t-logo" src="/assets/trusted/t-11.png" alt="" aria-hidden="true" />
+            <img class="t-logo" src="/assets/trusted/t-2.svg" alt="" aria-hidden="true" />
+            <img class="t-logo" src="/assets/trusted/t-3.png" alt="" aria-hidden="true" />
+            <img class="t-logo" src="/assets/trusted/t-7.png" alt="" aria-hidden="true" />
+            <img class="t-logo" src="/assets/trusted/t-5.webp" alt="" aria-hidden="true" />
+          </div>
+        </div>
+        <!-- Row 2: left -> right -->
+        <div class="logo-row">
+          <div class="logo-row-track track-ltr">
+            <img class="t-logo" src="/assets/trusted/t-6.png" alt="Muntaha CPA" />
+            <img class="t-logo" src="/assets/trusted/t-9.png" alt="rejuva" />
+            <img class="t-logo" src="/assets/trusted/t-10.png" alt="Physio Square" />
+            <img class="t-logo" src="/assets/trusted/t-12.png" alt="Polac Paints" />
+            <img class="t-logo" src="/assets/trusted/t-14.png" alt="Thinklogix" />
+            <img class="t-logo" src="/assets/trusted/t-6.png" alt="" aria-hidden="true" />
+            <img class="t-logo" src="/assets/trusted/t-9.png" alt="" aria-hidden="true" />
+            <img class="t-logo" src="/assets/trusted/t-10.png" alt="" aria-hidden="true" />
+            <img class="t-logo" src="/assets/trusted/t-12.png" alt="" aria-hidden="true" />
+            <img class="t-logo" src="/assets/trusted/t-14.png" alt="" aria-hidden="true" />
+          </div>
+        </div>
+        <!-- Row 3: right -> left -->
+        <div class="logo-row">
+          <div class="logo-row-track track-rtl track-rtl-2">
+            <img class="t-logo" src="/assets/trusted/t-15.png" alt="Al Kashkha" />
+            <img class="t-logo" src="/assets/trusted/t-16.png" alt="AC Properties" />
+            <img class="t-logo" src="/assets/trusted/t-17.png" alt="Creedgroup" />
+            <img class="t-logo" src="/assets/trusted/t-18.png" alt="Millennium Information Solution" />
+            <img class="t-logo" src="/assets/trusted/t-19.png" alt="Ecosense Resort" />
+            <img class="t-logo" src="/assets/trusted/t-15.png" alt="" aria-hidden="true" />
+            <img class="t-logo" src="/assets/trusted/t-16.png" alt="" aria-hidden="true" />
+            <img class="t-logo" src="/assets/trusted/t-17.png" alt="" aria-hidden="true" />
+            <img class="t-logo" src="/assets/trusted/t-18.png" alt="" aria-hidden="true" />
+            <img class="t-logo" src="/assets/trusted/t-19.png" alt="" aria-hidden="true" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CTA ===================== -->
+  <section class="section cta-wrap" id="cta">
+    <div class="container">
+      <div class="cta-box">
+        <div class="cta-blob cta-blob-1"></div>
+        <div class="cta-blob cta-blob-2"></div>
+        <div class="cta-content">
+          <h2 class="cta-title"><%- content.cta_title || 'Get a free call' %></h2>
+          <p><%- content.cta_text || '' %></p>
+          <a href="/contact" class="btn btn-green btn-lg"><%= content.cta_btn || 'Book an Assessment' %></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('../partials/footer-map') %>
+  <%- include('../partials/footer') %>
+</body>
+</html>
